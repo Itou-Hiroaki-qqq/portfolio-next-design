@@ -18,6 +18,30 @@ export type WorkApp = {
 
 export const worksApp: WorkApp[] = [
     {
+        id: "sakutto-task",
+        title: "さくっとタスク",
+        category: "WebApp ｜ 自主制作",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / GeminiAPI /cron-job.org",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "3日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "12日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "カレンダーとタスクリストが一体化したタスク管理Webアプリ。日々のタスクを効率的に管理し、指定時刻にメール通知を送信することで、タスクの見逃しを防ぐことを目的として開発した。繰り返しタスクや記念日管理など、実用的な機能を備えている。" },
+            { dt: "アプリの特徴", dd: "カレンダー形式でタスクを視覚的に管理でき、日次・週次・月次・年次など柔軟な繰り返し設定に対応。AI（Gemini API）を活用し、予定表の画像やPDFから自動的にイベントを抽出してタスク化する機能を実装。localStorageを使ったキャッシュ機能により、初期表示を高速化し、バックグラウンドで最新データを更新する仕組みを構築した。" },
+            { dt: "コーディング", dd: "Next.js（App Router）とTypeScriptを用いてコンポーネント設計を行い、Supabaseで認証、Neon Database（PostgreSQL）でデータ管理を実装。Gemini APIによる画像解析、Resendを使ったメール通知、cron-job.orgによる定期実行など、複数の外部サービスを統合。状態管理とキャッシュ戦略を工夫し、パフォーマンスとユーザー体験の両立を意識した。" },
+            { dt: "工夫点", dd: "localStorageキャッシュとバックグラウンド更新を組み合わせることで、初期表示を即座に行いつつ最新データを反映する仕組みを実現。AIによる予定表読み込み機能では、抽出結果の手動編集・追加・削除が可能なUIを用意し、実用性を重視。通知の重複送信を防ぐロジックや、時間入力の補完機能（「900」→「9:00?」）など、細かなUX改善も行った。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://sakutto-task.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-task.vercel.app/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/sakutto-task",
+        imageMain: "/assets/img/worksApp_sakutto-task.png"
+    },
+    {
         id: "ouchi-zaiko-next",
         title: "おうちで在庫くん",
         category: "WebApp ｜ 自主制作",
@@ -42,28 +66,28 @@ export const worksApp: WorkApp[] = [
         imageMain: "/assets/img/worksApp_ouchi-zaiko.png"
     },
     {
-        id: "ouchi-zaiko-larabel",
-        title: "おうちで在庫くん",
+        id: "loto6-check",
+        title: "ロト6速攻チェック",
         category: "WebApp ｜ 自主制作",
         role: "Direction / Design / Coding",
-        tools: "Figma / PHP / Laravel / supabase / Fly.io / docker",
+        tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Railway / cron-job.org",
         period: [
-            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
-            { task: "コーディング", duration: "10日" }
+            { task: "コーディング", duration: "4日" }
         ],
         description: [
-            { dt: "制作概要", dd: "家庭内の日用品・食材などの在庫を管理するWebアプリ。生活の中での使いやすさを重視し、スマホからの操作性を意識した設計で開発。主にLaravelを用いたサーバーサイド実装を行った。" },
-            { dt: "アプリの特徴", dd: "ジャンルごとに在庫を整理し、数量管理や次回購入リストなどの機能を実装。タブ表示やアラート制御など、ユーザーの使いやすさを意識したUI設計を反映。共有機能を通じて複数人での利用にも対応。" },
-            { dt: "コーディング", dd: "Laravel（MVC構成）でユーザー認証、ジャンル・アイテムCRUD、購入リスト管理などを実装。BladeテンプレートとAlpine.jsでインタラクティブなUIを構築し、状態保持やタブ遷移などにも対応した。" },
-            { dt: "工夫点", dd: "ジャンル間でのタブ状態をlocalStorageで保持することで、操作後もタブ位置が維持されるUXを実現。アラート表示の出し分けや共有ユーザー視点での表示変更など、細かな仕様調整を丁寧に対応した。" },
+            { dt: "制作概要", dd: "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるWebアプリ。公式サイトから最新の当選情報を自動取得してデータベースに格納し、ユーザーが登録した番号との照合結果を期間指定で確認できる機能を実装した。" },
+            { dt: "アプリの特徴", dd: "過去のCSVデータを一括インポートできるほか、Puppeteerを使った自動スクレイピングにより毎週2回（火曜・金曜の朝）に最新の当選情報を自動更新する仕組みを構築。フロントエンドとバックエンドをVercelとRailwayに分離し、重い処理でも安定動作する設計にした。" },
+            { dt: "コーディング", dd: "Next.js（App Router）とTypeScriptで構築し、Neon（PostgreSQL）で当選データを管理。Supabase Authenticationでユーザー認証を実装した。スクレイピング機能は別プロジェクト（loto6-auto-update）として分離し、cron-job.orgで定期実行。DaisyUIとTailwindCSSでシンプルなUIを実現した。" },
+            { dt: "工夫点", dd: "日付のタイムゾーン問題やUI表示の細かな調整など、実際の動作確認を通じて改善を重ねた。データベースのUPSERT処理で重複登録を防ぎ、エラーハンドリングとロギングを充実させて運用時のトラブルを最小化。フロントエンドと自動更新処理を完全に分離することで、それぞれの最適な環境でデプロイできる柔軟性を持たせた。" },
             {
                 dt: "デモURL",
-                dd: '<a href="https://ouchi-inventory.fly.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://ouchi-inventory.fly.dev/</a>'
+                dd: '<a href="https://loto6-check.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.vercel.app/</a>'
             }
         ],
-        github: "https://github.com/Itou-Hiroaki-qqq/ouchi-inventory",
-        imageMain: "/assets/img/worksApp_ouchi-zaiko-php.png"
+        github: "https://github.com/Itou-Hiroaki-qqq/loto6-check",
+        imageMain: "/assets/img/worksApp_loto6-check.png"
     },
     {
         id: "seiri-renraku-next",
@@ -136,6 +160,30 @@ export const worksApp: WorkApp[] = [
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/genki-meigen-app",
         imageMain: "/assets/img/worksApp_genki-meigen-app.png"
+    },
+    {
+        id: "ouchi-zaiko-larabel",
+        title: "おうちで在庫くん",
+        category: "WebApp ｜ 自主制作",
+        role: "Direction / Design / Coding",
+        tools: "Figma / PHP / Laravel / supabase / Fly.io / docker",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "10日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "家庭内の日用品・食材などの在庫を管理するWebアプリ。生活の中での使いやすさを重視し、スマホからの操作性を意識した設計で開発。主にLaravelを用いたサーバーサイド実装を行った。" },
+            { dt: "アプリの特徴", dd: "ジャンルごとに在庫を整理し、数量管理や次回購入リストなどの機能を実装。タブ表示やアラート制御など、ユーザーの使いやすさを意識したUI設計を反映。共有機能を通じて複数人での利用にも対応。" },
+            { dt: "コーディング", dd: "Laravel（MVC構成）でユーザー認証、ジャンル・アイテムCRUD、購入リスト管理などを実装。BladeテンプレートとAlpine.jsでインタラクティブなUIを構築し、状態保持やタブ遷移などにも対応した。" },
+            { dt: "工夫点", dd: "ジャンル間でのタブ状態をlocalStorageで保持することで、操作後もタブ位置が維持されるUXを実現。アラート表示の出し分けや共有ユーザー視点での表示変更など、細かな仕様調整を丁寧に対応した。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://ouchi-inventory.fly.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://ouchi-inventory.fly.dev/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/ouchi-inventory",
+        imageMain: "/assets/img/worksApp_ouchi-zaiko-php.png"
     },
     {
         id: "meigen-app-next",
