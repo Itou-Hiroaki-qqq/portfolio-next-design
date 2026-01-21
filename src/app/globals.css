@@ -804,6 +804,11 @@ works
   font-size: 20px;
 }
 
+.works_introduction {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
 .works_category {
   margin-top: 12px;
   font-size: 16px;
@@ -866,6 +871,10 @@ works
 
   .works_txtZone {
     padding: 16px;
+  }
+
+  .works_introduction {
+    margin-top: 16px;
   }
 
   .works_category {

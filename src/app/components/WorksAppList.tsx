@@ -15,7 +15,7 @@ export default function WorksAppList({ maxDisplay, showViewAllLink = false }: Wo
 
     return (
         <section className={`works wrapper ${hasMore && showViewAllLink ? 'works--hasMore' : ''}`} id={maxDisplay ? "works-app" : undefined}>
-            <h2 className="section_title">Works - App{maxDisplay ? "" : "一覧"}</h2>
+            <h2 className="section_title">Works - App{maxDisplay ? "" : " 一覧"}</h2>
 
             <div className="works_listContainer">
                 <ul className="works_list">
@@ -32,6 +32,7 @@ export default function WorksAppList({ maxDisplay, showViewAllLink = false }: Wo
                                     </div>
                                     <div className="works_txtZone">
                                         <h3 className="works_topic">{work.title}</h3>
+                                        <p className="works_introduction">{work.introduction}</p>
                                         <p className="works_category">{work.category}</p>
                                         <p className="works_role manrope">{work.role}</p>
                                         <p className="works_tool manrope">{work.tools}</p>

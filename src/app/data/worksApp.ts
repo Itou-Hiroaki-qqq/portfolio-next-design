@@ -2,6 +2,7 @@ export type WorkApp = {
     id: string;
     title: string;
     category: string;
+    introduction: string;
     role: string;
     tools: string;
     period?: {
@@ -21,6 +22,7 @@ export const worksApp: WorkApp[] = [
         id: "sakutto-task",
         title: "さくっとタスク",
         category: "WebApp ｜ 自主制作",
+        introduction: "カレンダーとタスクリストが一体化したタスク管理アプリ。繰り返しタスクや記念日設定、通知設定の他に、予定表の画像やPDFを読み込みタスク化する機能も備えている。",
         role: "Direction / Design / Coding",
         tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / GeminiAPI /cron-job.org",
         period: [
@@ -45,6 +47,7 @@ export const worksApp: WorkApp[] = [
         id: "ouchi-zaiko-next",
         title: "おうちで在庫くん",
         category: "WebApp ｜ 自主制作",
+        introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
         tools: "Figma / React / Next.js / / TailwindCSS / TypeScript / Firebase / vercel",
         period: [
@@ -69,6 +72,7 @@ export const worksApp: WorkApp[] = [
         id: "loto6-check",
         title: "ロト6速攻チェック",
         category: "WebApp ｜ 自主制作",
+        introduction: "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
         role: "Direction / Design / Coding",
         tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Railway / cron-job.org",
         period: [
@@ -93,6 +97,7 @@ export const worksApp: WorkApp[] = [
         id: "seiri-renraku-next",
         title: "整理して連絡くん",
         category: "WebApp ｜ 自主制作",
+        introduction: "習い事などの連絡内容を、日付順に自動整理して見やすく表示するアプリ。連絡文を貼り付けるだけで、日付情報や種別（試合・練習など）、持ち物などをAIで自動的に解析し、分類してカード表示することができる。",
         role: "Direction / Design / Coding",
         tools: "Figma / React / Next.js / TailwindCSS / TypeScript / Firebase / GeminiAPI / vercel",
         period: [
@@ -117,6 +122,7 @@ export const worksApp: WorkApp[] = [
         id: "recipe-search-next",
         title: "簡単レシピ検索",
         category: "WebApp ｜ 自主制作",
+        introduction: "食材を入力すると、すぐに作れるレシピを探すことができるアプリ。気に入ったレシピはお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
         tools: "Figma / React / Next.js / TailwindCSS / TypeScript / supabase / 楽天API / vercel",
         period: [
@@ -141,6 +147,7 @@ export const worksApp: WorkApp[] = [
         id: "genki-meigen-app",
         title: "元気がでる偉人の言葉アプリ",
         category: "WebApp ｜ 自主制作",
+        introduction: "偉人や著名人の名言をランダムに表示するアプリ。気に入った言葉はお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
         tools: "Figma / Vue.js / TypeScript / firebase / さくらレンタルサーバー",
         period: [
@@ -165,6 +172,7 @@ export const worksApp: WorkApp[] = [
         id: "ouchi-zaiko-larabel",
         title: "おうちで在庫くん",
         category: "WebApp ｜ 自主制作",
+        introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
         tools: "Figma / PHP / Laravel / supabase / Fly.io / docker",
         period: [
@@ -189,6 +197,7 @@ export const worksApp: WorkApp[] = [
         id: "meigen-app-next",
         title: "元気がでる偉人の言葉アプリ",
         category: "WebApp ｜ 自主制作",
+        introduction: "偉人や著名人の名言をランダムに表示するアプリ。気に入った言葉はお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
         tools: "Figma / React / Next.js / TypeScript / firebase / vercel",
         period: [
@@ -216,6 +225,7 @@ export const worksApp: WorkApp[] = [
 //         id: "★★★",
 //         title: "★★★",
 //         category: "WebApp ｜ 自主制作",
+//         introduction: "★★★",
 //         role: "Direction / Design / Coding",
 //         tools: "★Figma / React / Next.js / TypeScript / Firebase",
 //         period: [
