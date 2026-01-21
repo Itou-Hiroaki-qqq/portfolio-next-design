@@ -72,7 +72,7 @@ export default function HomePage() {
         <WorksList />
 
         {/* Works - App */}
-        <WorksAppList />
+        <WorksAppList maxDisplay={6} showViewAllLink={true} />
 
         {/* About */}
         <section className="about wrapper" id="about">

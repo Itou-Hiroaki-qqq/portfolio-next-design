@@ -734,12 +734,31 @@ works
   scroll-margin-top: 5rem;
 }
 
+.works_listContainer {
+  position: relative;
+}
+
 .works_list {
   margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px 40px;
   grid-auto-rows: 1fr;
+}
+
+.works_viewAllLink {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: auto;
+  text-align: right;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #000;
+}
+
+.works_viewAllLink:hover {
+  opacity: 0.7;
 }
 
 .works_item {
@@ -815,6 +834,11 @@ works
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 50px 40px;
     grid-auto-rows: 1fr;
+  }
+
+  .works_viewAllLink {
+    font-size: 18px;
+    margin-top: 30px;
   }
 
   .works_item {
