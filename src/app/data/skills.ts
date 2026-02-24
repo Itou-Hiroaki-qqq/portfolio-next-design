@@ -51,6 +51,13 @@ export const skills: SkillGroup[] = [
                 img: "/assets/img/skills_typescript.png",
                 link: "https://icons8.com/icon/wpZmKzk11AzJ/typescript",
                 text: "型定義によりバグを事前に防ぎながら、安全なコードを書くための基礎を習得。React/Next.jsと組み合わせた開発を経験。"
+            },
+            {
+                id: "python",
+                name: "Python",
+                img: "/assets/img/skills_Python.png",
+                link: "https://icons8.com/icon/l75OEUJkPAk4/python",
+                text: "日常の定型業務を自動化できるレベルの技術。スクリプトによるファイル操作やデータ処理、簡易ツールの作成が可能。"
             }
         ]
     },

@@ -19,12 +19,49 @@ export type WorkApp = {
 
 export const worksApp: WorkApp[] = [
     {
+        id: "hyakunin-goromaru",
+        title: "百人一首-ゴロでマル覚え-",
+        category: "WebApp ｜ 自主制作",
+        introduction: "百人一首を語呂合わせで覚える学習アプリ。上の句・下の句の学習と、4首・8首・20首の範囲テスト、まぎらわしい句に特化した問題で段階的に習得できる。音声再生とクリア状況の保存で、継続しやすい構成にしている。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Neon / Supabase / Vercel / Cloudflare R2 / Howler",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "10日" }
+        ],
+        description: [
+            {
+                dt: "制作概要",
+                dd: "百人一首を語呂合わせで効率的に覚えるためのWebアプリ。上の句（ひらがな）から下の句を選ぶ形式のテストと、まぎらわしい句に絞った練習で、段階的に暗記できるようにした。認証ユーザーはクリア状況を保存でき、学習リストで進捗を星マークで確認できる。"
+            },
+            {
+                dt: "アプリの特徴",
+                dd: "1～4首・5～8首など4首単位のブロックで「学習」「4首でテスト」「前回も入れて8首でテスト」を提供。20首ごとに「1～20首テスト」「21～40首テスト」などのまとめテストで習熟度を確認できる。間違えやすい問題では「その1」「その2」形式で上の句・下の句のまぎらわしい組み合わせを重点練習。語呂解説と音声（R2配信）で耳と目から覚えられる。Supabase認証とNeon DBでクリア情報を保存し、未認証でも学習・テストは利用可能。"
+            },
+            {
+                dt: "コーディング",
+                dd: "Next.js（App Router）と TypeScript で実装。句データは Neon（PostgreSQL）、認証は Supabase、音声ファイルは Cloudflare R2 で配信し、Howler で再生。API ルートで poems 取得・test-clears の取得・保存を実装し、Neon 障害時は 1～4 首のみ静的 JSON でフォールバック。Jest で lib の純粋関数と API ルートの単体テストを追加。語呂再生は非同期のため、次の問題へ進む際に前問の再生が続かないよう ref で制御している。"
+            },
+            {
+                dt: "工夫点",
+                dd: "テスト終了や画面遷移時に、読み込み中の語呂音声が後から流れないよう、playOnce で作成した Howl を Set で保持し stopAll 時に stop と unload で確実に止めるようにした。4首・8首・20首のクリア種別を testType で正しく保存し、学習リストの星表示（4首／8首／20首ブロック、間違えやすい問題のまとめテスト、両方クリア時の「間違えやすい問題」星）が一貫するよう判定を整理。"
+            },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://hyakunin-goromaru.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://hyakunin-goromaru.vercel.app/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/hyakunin-goromaru",
+        imageMain: "/assets/img/worksApp_hyakunin-goromaru.png"
+    },
+    {
         id: "sakutto-task",
         title: "さくっとタスク",
         category: "WebApp ｜ 自主制作",
         introduction: "カレンダーとタスクリストが一体化したタスク管理アプリ。繰り返しタスクや記念日設定、通知設定の他に、予定表の画像やPDFを読み込みタスク化する機能も備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / GeminiAPI /cron-job.org",
+        tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / GeminiAPI / cron-job.org",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "3日" },
             { task: "デザイン", duration: "1日" },
@@ -32,9 +69,9 @@ export const worksApp: WorkApp[] = [
         ],
         description: [
             { dt: "制作概要", dd: "カレンダーとタスクリストが一体化したタスク管理Webアプリ。日々のタスクを効率的に管理し、指定時刻にメール通知を送信することで、タスクの見逃しを防ぐことを目的として開発した。繰り返しタスクや記念日管理など、実用的な機能を備えている。" },
-            { dt: "アプリの特徴", dd: "カレンダー形式でタスクを視覚的に管理でき、日次・週次・月次・年次など柔軟な繰り返し設定に対応。AI（Gemini API）を活用し、予定表の画像やPDFから自動的にイベントを抽出してタスク化する機能を実装。localStorageを使ったキャッシュ機能により、初期表示を高速化し、バックグラウンドで最新データを更新する仕組みを構築した。" },
-            { dt: "コーディング", dd: "Next.js（App Router）とTypeScriptを用いてコンポーネント設計を行い、Supabaseで認証、Neon Database（PostgreSQL）でデータ管理を実装。Gemini APIによる画像解析、Resendを使ったメール通知、cron-job.orgによる定期実行など、複数の外部サービスを統合。状態管理とキャッシュ戦略を工夫し、パフォーマンスとユーザー体験の両立を意識した。" },
-            { dt: "工夫点", dd: "localStorageキャッシュとバックグラウンド更新を組み合わせることで、初期表示を即座に行いつつ最新データを反映する仕組みを実現。AIによる予定表読み込み機能では、抽出結果の手動編集・追加・削除が可能なUIを用意し、実用性を重視。通知の重複送信を防ぐロジックや、時間入力の補完機能（「900」→「9:00?」）など、細かなUX改善も行った。" },
+            { dt: "アプリの特徴", dd: "カレンダー形式でタスクを視覚的に管理でき、日次・週次・月次・年次など柔軟な繰り返し設定に対応。繰り返し予定の編集では「この予定のみ変更」と「これ以降のすべての繰り返しも変更」のスコープを選択可能。AI（Gemini API）で予定表の画像・PDFからイベントを抽出してタスク化する機能を実装。表示は React State を唯一の真実とし、localStorage は初回表示のヒントのみに使用。タスク完了は Optimistic 更新で即反映し、保存時は即座に一覧へ戻り、DB 保存はバックグラウンドで実行するよう設計している。" },
+            { dt: "コーディング", dd: "Next.js（App Router）と TypeScript でコンポーネント設計を行い、Supabase で認証、Neon Database（PostgreSQL）でデータ管理を実装。Gemini API による画像解析、Resend を使ったメール通知、cron-job.org による定期実行など、複数の外部サービスを統合。タスク編集画面では認証とタスク取得を並列化し、認証後はフォームの骨組みを即表示。API 結果は差分マージせず丸ごと setState で差し替え、状態の一貫性を保つようにした。" },
+            { dt: "工夫点", dd: "localStorage は初回表示・日付切り替え時の即時表示にのみ使い、表示更新時には参照しない設計にし、React State とキャッシュの二重管理を避けた。タスク追加・編集後の戻り先では、sessionStorage で「表示用の上書きリスト」を渡し、一覧に戻った直後から追加・編集内容が表示され続けるようにした（先行して返る API レスポンスで上書きされないよう制御）。完了チェックは Optimistic に State を更新し、失敗時のみロールバック。カレンダーの日付クリックと URL 同期の競合を防ぎ、別の日を選んでも意図した日が表示されるようにした。予定表読み込みでは抽出結果の手動編集・追加・削除が可能な UI と、時間入力補完（「900」→「9:00?」）など細かな UX 改善も行った。" },
             {
                 dt: "デモURL",
                 dd: '<a href="https://sakutto-task.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-task.vercel.app/</a>'
@@ -69,29 +106,29 @@ export const worksApp: WorkApp[] = [
         imageMain: "/assets/img/worksApp_ouchi-zaiko.png"
     },
     {
-        id: "loto6-check",
-        title: "ロト6速攻チェック",
-        category: "WebApp ｜ 自主制作",
-        introduction: "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
-        role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Railway / cron-job.org",
-        period: [
-            { task: "企画・ワイヤーフレーム", duration: "1日" },
-            { task: "デザイン", duration: "1日" },
-            { task: "コーディング", duration: "4日" }
+        "id": "loto6-check",
+        "title": "ロト6速攻チェック",
+        "category": "WebApp ｜ 自主制作",
+        "introduction": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
+        "role": "Direction / Design / Coding",
+        "tools": "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Cloud Run / cron-job.org",
+        "period": [
+            { "task": "企画・ワイヤーフレーム", "duration": "1日" },
+            { "task": "デザイン", "duration": "1日" },
+            { "task": "コーディング", "duration": "4日" }
         ],
-        description: [
-            { dt: "制作概要", dd: "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるWebアプリ。公式サイトから最新の当選情報を自動取得してデータベースに格納し、ユーザーが登録した番号との照合結果を期間指定で確認できる機能を実装した。" },
-            { dt: "アプリの特徴", dd: "過去のCSVデータを一括インポートできるほか、Puppeteerを使った自動スクレイピングにより毎週2回（火曜・金曜の朝）に最新の当選情報を自動更新する仕組みを構築。フロントエンドとバックエンドをVercelとRailwayに分離し、重い処理でも安定動作する設計にした。" },
-            { dt: "コーディング", dd: "Next.js（App Router）とTypeScriptで構築し、Neon（PostgreSQL）で当選データを管理。Supabase Authenticationでユーザー認証を実装した。スクレイピング機能は別プロジェクト（loto6-auto-update）として分離し、cron-job.orgで定期実行。DaisyUIとTailwindCSSでシンプルなUIを実現した。" },
-            { dt: "工夫点", dd: "日付のタイムゾーン問題やUI表示の細かな調整など、実際の動作確認を通じて改善を重ねた。データベースのUPSERT処理で重複登録を防ぎ、エラーハンドリングとロギングを充実させて運用時のトラブルを最小化。フロントエンドと自動更新処理を完全に分離することで、それぞれの最適な環境でデプロイできる柔軟性を持たせた。" },
+        "description": [
+            { "dt": "制作概要", "dd": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるWebアプリ。公式サイトから最新の当選情報を自動取得してデータベースに格納し、ユーザーが登録した番号との照合結果を期間指定で確認できる機能を実装した。" },
+            { "dt": "アプリの特徴", "dd": "過去のCSVデータを一括インポートできるほか、Puppeteerを使った自動スクレイピングにより毎週2回（火曜・金曜の朝）に最新の当選情報を自動更新する仕組みを構築。フロントエンドとバックエンドをVercelとCloud Runに分離し、重い処理でも安定動作する設計にした。" },
+            { "dt": "コーディング", "dd": "Next.js（App Router）とTypeScriptで構築し、Neon（PostgreSQL）で当選データを管理。Supabase Authenticationでユーザー認証を実装した。スクレイピング機能は別プロジェクト（loto6-auto-update）として分離し、cron-job.orgで定期実行。DaisyUIとTailwindCSSでシンプルなUIを実現した。" },
+            { "dt": "工夫点", "dd": "日付のタイムゾーン問題やUI表示の細かな調整など、実際の動作確認を通じて改善を重ねた。データベースのUPSERT処理で重複登録を防ぎ、エラーハンドリングとロギングを充実させて運用時のトラブルを最小化。フロントエンドと自動更新処理を完全に分離することで、それぞれの最適な環境でデプロイできる柔軟性を持たせた。" },
             {
-                dt: "デモURL",
-                dd: '<a href="https://loto6-check.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.vercel.app/</a>'
+                "dt": "デモURL",
+                "dd": '<a href="https://loto6-check.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.vercel.app/</a>'
             }
         ],
-        github: "https://github.com/Itou-Hiroaki-qqq/loto6-check",
-        imageMain: "/assets/img/worksApp_loto6-check.png"
+        "github": "https://github.com/Itou-Hiroaki-qqq/loto6-check",
+        "imageMain": "/assets/img/worksApp_loto6-check.png"
     },
     {
         id: "seiri-renraku-next",
@@ -142,6 +179,43 @@ export const worksApp: WorkApp[] = [
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/recipe-search-next",
         imageMain: "/assets/img/worksApp_recipe-search-next.png"
+    },
+    {
+        id: "sakutto-anime-search",
+        title: "さくっとアニメ検索→録画表印刷",
+        category: "WebApp ｜ 自主制作",
+        introduction: "Annict APIで指定シーズンのアニメ放映一覧を取得し、放映局で絞り込みながら作品を選び、選んだものだけをまとめた録画表を印刷できるWebアプリ。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / DaisyUI / Annict API / Vercel",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "5日" }
+        ],
+        description: [
+            {
+                dt: "制作概要",
+                dd: "指定した西暦・シーズン（春4〜6月／夏7〜9月／秋10〜12月／冬1〜3月）のアニメ放映一覧をAnnict APIで取得し、一覧表示・放映局での絞り込み・作品選択を経て、選択分だけの録画表を専用ページで表示・印刷できるWebアプリ。企画・デザイン・実装まで一貫して担当した。"
+            },
+            {
+                dt: "アプリの特徴",
+                dd: "トップページで年とシーズンを選んで検索すると、放映開始日時順の一覧が表示される。放映局は「全国ネット＋TOKYO MX」「地方局」「その他放送」に自動分類され、チェックボックスで絞り込み可能。一覧から印刷したい作品を選択し「録画表の作成」で録画表ページへ遷移。録画表ページでは選択作品のみを印刷向けレイアウトで表示し、ブラウザの印刷機能でそのまま印刷できる。"
+            },
+            {
+                dt: "コーディング",
+                dd: "Next.js（App Router）とTypeScriptで実装。AnnictのGraphQL APIを利用する処理は src/lib/annict.ts に集約し、シーズン定義・型・ページネーション付きの作品取得を一元管理。放映局の分類は src/lib/channelCategories.ts でキーワードベースのルールとして定義。GET /api/season で年・シーズンを受け取りサーバー側でAPIを呼び、クライアントはそのJSONを表示に利用。スタイルはTailwind CSSとDaisyUIで統一した。"
+            },
+            {
+                dt: "工夫点",
+                dd: "録画表に載せる作品はトップページで選択し、sessionStorageに保存してから録画表ページへ遷移する設計にし、サーバーやDBを持たずに「選択結果の受け渡し」を実現。親ディレクトリに別プロジェクトのpackage.jsonがある環境でも正しくビルドできるよう、next.config.jsでwebpackのcontextとresolve.modulesをプロジェクトルートに固定。シーズンはAPI用スラッグ（spring/summer/autumn/winter）と表示ラベル（4〜6月など）を分離し、一覧の日時は日本時間でフォーマットして表示している。"
+            },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://sakutto-anime-search.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-anime-search.vercel.app/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/sakutto-anime-search",
+        imageMain: "/assets/img/worksApp_sakutto-anime-search.png"
     },
     {
         id: "genki-meigen-app",
