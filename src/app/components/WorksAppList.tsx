@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { worksApp, WorkApp } from "../data/worksApp";
 
 interface WorksAppListProps {
@@ -24,10 +23,12 @@ export default function WorksAppList({ maxDisplay, showViewAllLink = false }: Wo
                             <Link href={`/worksApp/${work.id}`}>
                                 <div className="works_inner">
                                     <div className="works_imgBox">
-                                        <img
+                                        <Image
                                             className="works_img"
                                             src={work.imageMain}
                                             alt={work.title}
+                                            width={600}
+                                            height={300}
                                         />
                                     </div>
                                     <div className="works_txtZone">

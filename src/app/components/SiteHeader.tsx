@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function SiteHeader() {
@@ -16,7 +17,7 @@ export default function SiteHeader() {
                 <div className={`header_group ${menuOpen ? "open" : ""}`}>
                     <h1>
                         <Link href="/">
-                            <img src="/assets/img/logo.svg" alt="サイトのロゴ" />
+                            <Image src="/assets/img/logo.svg" alt="サイトのロゴ" width={120} height={40} />
                         </Link>
                     </h1>
 

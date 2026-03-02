@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { works, Work } from "../data/works";
 
 export default function WorksList() {
@@ -14,10 +13,12 @@ export default function WorksList() {
                         <Link href={`/works/${work.id}`}>
                             <div className="works_inner">
                                 <div className="works_imgBox">
-                                    <img
+                                    <Image
                                         className="works_img"
                                         src={work.imageMain}
                                         alt={work.title}
+                                        width={600}
+                                        height={300}
                                     />
                                 </div>
                                 <div className="works_txtZone">

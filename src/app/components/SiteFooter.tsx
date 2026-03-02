@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SiteFooter() {
     return (
@@ -9,7 +8,7 @@ export default function SiteFooter() {
                 <div className="footer_group">
                     <h2 className="footer_logo">
                         <Link href="/">
-                            <img src="/assets/img/logo.svg" alt="サイトのロゴ" />
+                            <Image src="/assets/img/logo.svg" alt="サイトのロゴ" width={120} height={40} />
                         </Link>
                     </h2>
 

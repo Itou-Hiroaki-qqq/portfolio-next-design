@@ -16,3 +16,7 @@ export const workExperiences: WorkExperienceItem[] = [
         content: "株式会社アルマコ様の就活サイト案件にてFAQページを追加",
     },
 ];
+
+export const workExperiencesSorted = [...workExperiences].sort((a, b) =>
+    b.date.localeCompare(a.date)
+);

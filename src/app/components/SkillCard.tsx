@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type SkillItem = {
     id: string;
     name: string;
@@ -24,11 +26,11 @@ export default function SkillCard({
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <img className="skills_item-img" src={item.img} alt={item.name} />
+                        <Image className="skills_item-img" src={item.img} alt={item.name} width={75} height={75} />
                     </a>
                 ) : (
                     <div>
-                        <img className="skills_item-img" src={item.img} alt={item.name} />
+                        <Image className="skills_item-img" src={item.img} alt={item.name} width={75} height={75} />
                     </div>
                 )}
             </div>

@@ -13,6 +13,7 @@ export default function ContactForm() {
         confirmEmail: "",
         message: "",
     });
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "emailMismatch" | "emailFail">("idle");
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,9 +25,11 @@ export default function ContactForm() {
         e.preventDefault();
 
         if (form.email !== form.confirmEmail) {
-            alert("メールアドレスが一致しません");
+            setStatus("emailMismatch");
             return;
         }
+
+        setStatus("loading");
 
         try {
             // ① Firestore に保存
@@ -46,9 +49,9 @@ export default function ContactForm() {
 
             if (!result.success) {
                 console.error("Resend API Error:", result);
-                alert("メール通知に失敗しました（Firestore には保存済み）");
+                setStatus("emailFail");
             } else {
-                alert("送信が完了しました！");
+                setStatus("success");
             }
 
             // フォームを空に戻す
@@ -63,7 +66,7 @@ export default function ContactForm() {
 
         } catch (error) {
             console.error("Error:", error);
-            alert("送信に失敗しました");
+            setStatus("error");
         }
     };
 
@@ -200,15 +203,39 @@ export default function ContactForm() {
                     />
                 </div>
 
+                {/* フィードバックメッセージ */}
+                {status === "emailMismatch" && (
+                    <p className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+                        メールアドレスが一致しません。再度ご確認ください。
+                    </p>
+                )}
+                {status === "success" && (
+                    <p className="mb-4 p-3 bg-green-100 text-green-700 rounded-md text-sm">
+                        送信が完了しました！後ほどご連絡いたします。
+                    </p>
+                )}
+                {status === "emailFail" && (
+                    <p className="mb-4 p-3 bg-yellow-100 text-yellow-700 rounded-md text-sm">
+                        内容は受け付けましたが、メール通知の送信に失敗しました。
+                    </p>
+                )}
+                {status === "error" && (
+                    <p className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+                        送信に失敗しました。しばらくしてから再度お試しください。
+                    </p>
+                )}
+
                 {/* 送信ボタン */}
                 <button
                     type="submit"
+                    disabled={status === "loading"}
                     className="
-                        w-full py-3 text-white font-bold rounded-md 
+                        w-full py-3 text-white font-bold rounded-md
                         bg-blue-500 hover:bg-blue-600 transition
+                        disabled:opacity-60 disabled:cursor-not-allowed
                     "
                 >
-                    送信
+                    {status === "loading" ? "送信中..." : "送信"}
                 </button>
             </form>
         </section>

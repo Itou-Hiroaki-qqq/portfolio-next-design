@@ -79,10 +79,12 @@ export default function HomePage() {
           <div className="about_zone">
             <h2 className="section_title">About</h2>
             <div className="about_group">
-              <img
+              <Image
                 className="about_img"
                 src="/assets/img/about_picture.jpg"
-                alt=""
+                alt="伊藤寛晃"
+                width={176}
+                height={176}
               />
               <div className="about_txtZone">
                 <p className="about_name">

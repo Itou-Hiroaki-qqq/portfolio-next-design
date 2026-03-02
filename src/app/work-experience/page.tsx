@@ -1,17 +1,13 @@
-import { workExperiences } from "../data/workExperience";
+import { workExperiencesSorted } from "../data/workExperience";
 
 export default function WorkExperiencePage() {
-    const sorted = [...workExperiences].sort((a, b) =>
-        b.date.localeCompare(a.date)
-    );
-
     return (
         <section className="work-experience s-wrapper">
             <h2 className="section_title">Work Experience</h2>
             <div className="work-experience_zone">
 
                 <ul className="work-experience_list">
-                    {sorted.map((item) => (
+                    {workExperiencesSorted.map((item) => (
                         <li className="work-experience_item" key={item.id}>
                             <p className="work-experience_date">
                                 {item.date}

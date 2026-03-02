@@ -1,15 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { workExperiences } from "../data/workExperience";
+import { workExperiencesSorted } from "../data/workExperience";
 
 export default function WorkExperienceList() {
-    const sorted = [...workExperiences].sort((a, b) =>
-        b.date.localeCompare(a.date)
-    );
-
-    const displayItems = sorted.slice(0, 5);
-    const hasMore = sorted.length > 5;
+    const displayItems = workExperiencesSorted.slice(0, 5);
+    const hasMore = workExperiencesSorted.length > 5;
 
     return (
         <section className="work-experience s-wrapper" id="work-experience">

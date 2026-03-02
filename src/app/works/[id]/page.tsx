@@ -1,7 +1,26 @@
 import "./worksPage.css";
+import Image from "next/image";
+import { Metadata } from "next";
 import WorksList from "@/app/components/WorksList";
 import ContactForm from "@/app/components/ContactForm";
 import { works } from "@/app/data/works";
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+    const { id } = await params;
+    const work = works.find((item) => item.id === id);
+    if (!work) return { title: "作品が見つかりません" };
+    return {
+        title: `${work.title} | ITO HIROAKI Portfolio`,
+        description: work.description[0]?.dd.replace(/<[^>]*>/g, "").slice(0, 120),
+        openGraph: {
+            title: work.title,
+            description: work.description[0]?.dd.replace(/<[^>]*>/g, "").slice(0, 120),
+            images: [{ url: work.imageMain }],
+        },
+    };
+}
 
 export default async function WorkDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params; // ← Promise を await して展開する
@@ -21,10 +40,13 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ id:
             <section className="work-detail s-wrapper">
                 <h2 className="page-title">{work.title}</h2>
 
-                <img
+                <Image
                     src={work.imageMain}
                     alt={work.title}
                     className="work_mainImg"
+                    width={1000}
+                    height={700}
+                    style={{ width: "100%", height: "auto" }}
                 />
 
                 <div className="ss-wrapper">
@@ -35,7 +57,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ id:
                         {work.period && work.period.length > 0 && (
                             <li className="work_info-item">
                                 <h3 className="work_info-img">
-                                    <img src="/assets/img/woksPage_period.png" alt="製作期間" />
+                                    <Image src="/assets/img/woksPage_period.png" alt="製作期間" width={30} height={30} />
                                 </h3>
                                 <dl className="works_info-periodList">
                                     {work.period.map((p, index) => (
@@ -51,7 +73,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ id:
                         {work.tools && (
                             <li className="work_info-item">
                                 <h3 className="work_info-img">
-                                    <img src="/assets/img/woksPage_tools.png" alt="使用ツール" />
+                                    <Image src="/assets/img/woksPage_tools.png" alt="使用ツール" width={30} height={30} />
                                 </h3>
                                 <p className="work_info-txt">{work.tools}</p>
                             </li>
@@ -60,7 +82,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ id:
                         {work.github && (
                             <li className="work_info-item">
                                 <h3 className="work_info-img">
-                                    <img src="/assets/img/woksPage_gitHub-url.png" alt="GitHubのURL" />
+                                    <Image src="/assets/img/woksPage_gitHub-url.png" alt="GitHubのURL" width={30} height={30} />
                                 </h3>
                                 <a
                                     href={work.github}
@@ -86,15 +108,21 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ id:
 
                     {work.shots && (
                         <div className="work_pageShot-zone">
-                            <img
+                            <Image
                                 className="work_pageShot-pc"
                                 src={work.shots.pc}
                                 alt={`${work.title} PCページショット`}
+                                width={500}
+                                height={4000}
+                                style={{ height: "auto" }}
                             />
-                            <img
+                            <Image
                                 className="work_pageShot-sp"
                                 src={work.shots.sp}
                                 alt={`${work.title} SPページショット`}
+                                width={200}
+                                height={4000}
+                                style={{ height: "auto" }}
                             />
                         </div>
                     )}

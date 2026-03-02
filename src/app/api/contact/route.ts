@@ -4,9 +4,24 @@ import { Resend } from "resend";
 // Resend クライアント
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function escapeHtml(str: string): string {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 export async function POST(req: Request) {
     try {
         const data = await req.json();
+
+        const lastName = escapeHtml(String(data.lastName ?? ""));
+        const firstName = escapeHtml(String(data.firstName ?? ""));
+        const company = escapeHtml(String(data.company ?? ""));
+        const email = escapeHtml(String(data.email ?? ""));
+        const message = escapeHtml(String(data.message ?? "")).replace(/\n/g, "<br>");
 
         // ---------- 管理者向けメール ----------
         const adminSend = await resend.emails.send({
@@ -15,12 +30,12 @@ export async function POST(req: Request) {
             subject: "【Portfolio】新しいお問い合わせがありました",
             html: `
                 <h2>新規お問い合わせ</h2>
-                <p>姓: ${data.lastName}</p>
-                <p>名: ${data.firstName}</p>
-                <p>会社名: ${data.company || "(未記入)"}</p>
-                <p>メール: ${data.email}</p>
+                <p>姓: ${lastName}</p>
+                <p>名: ${firstName}</p>
+                <p>会社名: ${company || "(未記入)"}</p>
+                <p>メール: ${email}</p>
                 <p><strong>メッセージ:</strong></p>
-                <p>${data.message.replace(/\n/g, "<br>")}</p>
+                <p>${message}</p>
                 <hr />
                 <p>送信日時: ${new Date().toLocaleString("ja-JP")}</p>
             `,
@@ -32,13 +47,13 @@ export async function POST(req: Request) {
             to: data.email,
             subject: "お問い合わせありがとうございます",
             html: `
-                <p>${data.lastName} ${data.firstName} 様</p>
+                <p>${lastName} ${firstName} 様</p>
                 <p>お問い合わせいただきありがとうございました。</p>
                 <p>以下の内容で受け付けました。</p>
 
                 <hr />
                 <p><strong>お問い合わせ内容:</strong></p>
-                <p>${data.message.replace(/\n/g, "<br>")}</p>
+                <p>${message}</p>
                 <hr />
 
                 <p>担当者より後ほどご連絡いたしますので、今しばらくお待ちください。</p>
