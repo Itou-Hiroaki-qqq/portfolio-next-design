@@ -65,7 +65,7 @@ a:hover {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   position: relative;
-  padding-bottom: 16px;
+  padding-bottom: 6px;
 }
 
 .section_title::after {
@@ -466,7 +466,7 @@ hero
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 40px rgba(37, 99, 235, 0.3);
   border-bottom: 2px solid #2563EB;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
 }
 
 /* hero PC */
@@ -1142,6 +1142,7 @@ about
   .about_name span {
     display: inline-block;
     margin-top: 0;
+    margin-left: 16px;
     text-align: left;
   }
 

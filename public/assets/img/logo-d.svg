@@ -1,0 +1,13 @@
+<svg width="130" height="50" viewBox="0 0 130 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- D案: グロー＋極細ウェイト — サイバー/ネオン風 -->
+  <text x="10" y="35" font-family="'Inter', sans-serif" font-size="30" font-weight="200" fill="#E2E8F0" letter-spacing="0.35em"
+    style="filter: drop-shadow(0 0 6px rgba(37,99,235,0.5))">ITO</text>
+  <line x1="10" y1="42" x2="110" y2="42" stroke="url(#dGrad)" stroke-width="1"/>
+  <defs>
+    <linearGradient id="dGrad" x1="10" y1="0" x2="110" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB"/>
+      <stop offset="0.5" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#2563EB" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

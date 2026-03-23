@@ -1,15 +1,16 @@
-<svg width="200" height="75" viewBox="0 0 200 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Terminal bracket accent -->
-  <text x="8" y="50" font-family="'Inter', 'Consolas', monospace" font-size="36" font-weight="300" fill="#2563EB" letter-spacing="0.02em">&gt;</text>
-
-  <!-- Main text "Ito" -->
-  <text x="32" y="50" font-family="'Inter', 'Consolas', monospace" font-size="36" font-weight="700" fill="#F8FAFC" letter-spacing="0.05em">Ito</text>
-
-  <!-- Cursor blink line -->
-  <rect x="105" y="22" width="3" height="32" rx="1" fill="#2563EB">
-    <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
-  </rect>
-
-  <!-- Subtitle -->
-  <text x="33" y="66" font-family="'Inter', 'Consolas', monospace" font-size="11" font-weight="400" fill="#64748B" letter-spacing="0.25em">PORTFOLIO</text>
+<svg width="130" height="50" viewBox="0 0 130 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- J-2案: 上の線は左から右へフェードアウト、下の線は右から左へフェードアウト -->
+  <line x1="10" y1="8" x2="110" y2="8" stroke="url(#j2Top)" stroke-width="1.5"/>
+  <text x="18" y="35" font-family="'Inter', sans-serif" font-size="28" font-weight="600" fill="#F8FAFC" letter-spacing="0.4em">ITO</text>
+  <line x1="10" y1="42" x2="110" y2="42" stroke="url(#j2Bottom)" stroke-width="1.5"/>
+  <defs>
+    <linearGradient id="j2Top" x1="10" y1="0" x2="110" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#2563EB" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="j2Bottom" x1="10" y1="0" x2="110" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
 </svg>
