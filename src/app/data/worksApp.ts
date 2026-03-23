@@ -106,29 +106,29 @@ export const worksApp: WorkApp[] = [
         imageMain: "/assets/img/worksApp_ouchi-zaiko.png"
     },
     {
-        "id": "loto6-check",
-        "title": "ロト6速攻チェック",
-        "category": "WebApp ｜ 自主制作",
-        "introduction": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
-        "role": "Direction / Design / Coding",
-        "tools": "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Cloud Run / cron-job.org",
-        "period": [
-            { "task": "企画・ワイヤーフレーム", "duration": "1日" },
-            { "task": "デザイン", "duration": "1日" },
-            { "task": "コーディング", "duration": "4日" }
+        id: "loto6-check-cloudflare",
+        title: "ロト6チェック(Cloudflare版)",
+        category: "WebApp ｜ 自主制作",
+        introduction: "ロト6の購入番号を登録しておくと、当選番号と自動で照合して結果を表示するWebアプリ。当選番号は外部サービス経由で定期的に自動取得され、常に最新の状態が保たれる。PWA対応でスマホのホーム画面からも利用可能。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Cloudflare Workers / Cloudflare D1 / OpenNext / daisyUI / cron-job.org",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "4日" }
         ],
-        "description": [
-            { "dt": "制作概要", "dd": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるWebアプリ。公式サイトから最新の当選情報を自動取得してデータベースに格納し、ユーザーが登録した番号との照合結果を期間指定で確認できる機能を実装した。" },
-            { "dt": "アプリの特徴", "dd": "過去のCSVデータを一括インポートできるほか、Puppeteerを使った自動スクレイピングにより毎週2回（火曜・金曜の朝）に最新の当選情報を自動更新する仕組みを構築。フロントエンドとバックエンドをVercelとCloud Runに分離し、重い処理でも安定動作する設計にした。" },
-            { "dt": "コーディング", "dd": "Next.js（App Router）とTypeScriptで構築し、Neon（PostgreSQL）で当選データを管理。Supabase Authenticationでユーザー認証を実装した。スクレイピング機能は別プロジェクト（loto6-auto-update）として分離し、cron-job.orgで定期実行。DaisyUIとTailwindCSSでシンプルなUIを実現した。" },
-            { "dt": "工夫点", "dd": "日付のタイムゾーン問題やUI表示の細かな調整など、実際の動作確認を通じて改善を重ねた。データベースのUPSERT処理で重複登録を防ぎ、エラーハンドリングとロギングを充実させて運用時のトラブルを最小化。フロントエンドと自動更新処理を完全に分離することで、それぞれの最適な環境でデプロイできる柔軟性を持たせた。" },
+        description: [
+            { dt: "制作概要", dd: "ロト6の購入番号を登録し、当選番号との照合結果（1等〜5等・はずれ）を自動判定するWebアプリ。当選番号は別サービス（Cloud Run + Puppeteer）が定期取得し、APIでCloudflare D1に同期する仕組みにより、ユーザーは常に最新の抽選結果を確認できる。期間を指定しての過去データ検索にも対応している。" },
+            { dt: "アプリの特徴", dd: "ユーザーごとに複数の購入番号を登録でき、抽選日ごとにすべての番号の当選判定を一括表示する。一致した等級に応じてバッジの色やアニメーションが変わる視覚的な結果表示を実装。当選番号の自動取得は cron-job.org → Cloud Run → Cloudflare D1 の連携で月・木の抽選後に自動実行される。PWA対応により、スマホのホーム画面に追加してネイティブアプリのように利用できる。" },
+            { dt: "コーディング", dd: "Next.js 15（App Router）と TypeScript で構築し、OpenNext を使って Cloudflare Workers 上にデプロイ。データベースには Cloudflare D1（SQLite）を採用し、配列データはJSON文字列として保存。認証は Web Crypto API を使った自前のJWT実装（PBKDF2によるパスワードハッシュ + HMAC-SHA256による署名）で、外部ライブラリに依存しない設計とした。UIは Tailwind CSS v4 + daisyUI 5 でレスポンシブに構築している。" },
+            { dt: "工夫点", dd: "Cloudflare Workers では Node.js のネイティブモジュールが使えないため、JWT認証やパスワードハッシュを Web Crypto API のみで自前実装した。当選番号の自動取得では、みずほ銀行のAkamai WAFがCloudflare WorkersのIPを拒否する問題に直面し、別サービス（Cloud Run + Puppeteer）経由でスクレイピングしたデータをAPI経由でD1に同期する二段構成で解決した。また、環境変数の取得に process.env が使えないCloudflare Workers固有の制約にも対応し、getCloudflareContext() 経由でバインディングを取得する設計とした。" },
             {
-                "dt": "デモURL",
-                "dd": '<a href="https://loto6-check.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.vercel.app/</a>'
+                dt: "デモURL",
+                dd: '<a href="https://loto6-check.chiteijin315.workers.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.chiteijin315.workers.dev/</a>'
             }
         ],
-        "github": "https://github.com/Itou-Hiroaki-qqq/loto6-check",
-        "imageMain": "/assets/img/worksApp_loto6-check.png"
+        github: "https://github.com/Itou-Hiroaki-qqq/loto6-check-cloudflare",
+        imageMain: "/assets/img/worksApp_loto6-check.png"
     },
     {
         id: "seiri-renraku-next",
@@ -154,6 +154,81 @@ export const worksApp: WorkApp[] = [
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/seiri-renraku-next",
         imageMain: "/assets/img/worksApp_seiri-renraku-next.png"
+    },
+    {
+        id: "ai-fukushu",
+        title: "AIで復習くん",
+        category: "WebApp ｜ 自主制作",
+        introduction: "教科書やドリルの写真をAIが解析し、その内容に基づいた問題を出題・採点・解説してくれる復習アプリ。小学1年〜中学3年の主要5教科に対応し、学習履歴からテスト対策問題を生成する機能も備えている。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Vite / TypeScript / Hono / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / Drizzle ORM / Tailwind CSS v4 / shadcn&sol;ui / zustand / GeminiAPI",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "3日" },
+            { task: "デザイン", duration: "2日" },
+            { task: "コーディング", duration: "9日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "教科書やドリルをスマホで撮影するだけで、AIが内容を解析して問題を自動生成する復習Webアプリ。小学1年〜中学3年の算数/数学・英語・国語・理科・社会に対応。復習結果は学習履歴として蓄積され、教科書のページ範囲を指定してテスト対策問題を生成できる。PWA対応でスマホのホーム画面からアプリとして起動可能。" },
+            { dt: "アプリの特徴", dd: "1問ずつ出題→解答確認→正誤判定の流れで、正解・不正解に応じて「もう一度似た問題」「さらに別の問題」「別のページをやる」「今日の復習を終わる」の4アクションを選択可能。複数ページにまたがっても問題数を継続カウントし、結果画面では全ページ分の正答率を円グラフで表示。テスト対策では、過去の復習で蓄積したAI解析データ（単元名・重要概念・公式・例題など）をプロンプトに活用し、範囲を絞った精度の高い出題を実現している。" },
+            { dt: "コーディング", dd: "pnpm workspacesによるモノレポ構成で、フロントエンド（Vite + React 19 + TypeScript）とバックエンドAPI（Hono v4 on Cloudflare Workers）を分離。状態管理はzustandで一元化し、ページ遷移をまたぐ問題数カウントやセッション管理を実装。データベースはCloudflare D1（SQLite）+ Drizzle ORMで構築し、画像はCloudflare R2に保存。認証はJWT（jose）+ bcryptjsによる自前実装で、Gemini 2.5 Flash APIを使った画像解析・問題生成のリトライ処理やJSONパースのエラーハンドリングも組み込んでいる。" },
+            { dt: "工夫点", dd: "撮影した画像の解析結果（単元名・重要概念・公式・例題）をanalysisDataとしてDB保存し、テスト対策時にページ範囲でフィルタして再利用する設計にした。復習フローでは、ページ切り替え時にanswersやwrongQuestionIdsを保持しつつimageKeysのみリセットする部分リセット機構を実装し、複数ページの復習をシームレスに繋げた。結果画面からの学習履歴登録では教科書の上下巻・ページ範囲を入力でき、後からテスト範囲として正確に指定できるようにした。UIはTailwind CSS v4 + shadcn/uiで統一し、スマホ操作に最適化したレイアウトを構築している。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://ai-fukushu-web.pages.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://ai-fukushu-web.pages.dev/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/ai-fukushu",
+        imageMain: "/assets/img/worksApp_ai-fukushu.png"
+    },
+    {
+        id: "sakutto-inji",
+        title: "さくっと印字",
+        category: "WebApp ｜ 自主制作",
+        introduction: "記入用紙をスキャンして取り込み、画面上でテキストの配置位置を指定して、ブランクの実物用紙に直接印字できるWebアプリ。テンプレートの保存・複製・エクスポートにも対応し、繰り返し使う書類の印字作業を効率化する。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / Next.js 15 / TypeScript / Tailwind CSS v4 / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / Better Auth / pdf-lib / pdfjs-dist",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "6日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "記入用紙（払込取扱票・申請書など）をPDF/画像でスキャンし、画面上でテキストフィールドを配置して、ブランクの実物用紙に直接印字できるWebアプリ。テンプレートとして保存すれば、同じ書式の用紙に繰り返し印字でき、手書きの手間や記入ミスを削減することを目的に開発した。" },
+            { dt: "アプリの特徴", dd: "キャンバス上にクリックでテキストフィールドを配置し、ドラッグで位置調整が可能。フォント（ゴシック/明朝）・サイズ・色・回転・横書き/縦書きを個別に設定できる。A4・B5・はがき・払込取扱票など主要な用紙プリセットに加え、ユーザー定義のカスタムサイズにも対応。テンプレートの複製やJSON形式でのエクスポート/インポート機能により、バックアップやテンプレート共有も可能にしている。" },
+            { dt: "コーディング", dd: "Next.js 15（App Router）とTypeScriptでフロントエンドを構築し、Cloudflare Workers上にデプロイ。認証にBetter Auth、データベースにCloudflare D1（SQLite）、スキャンPDFとフォントの保存にCloudflare R2を使用。PDF表示にはpdfjs-dist、印刷用PDF生成にはpdf-libをクライアントサイドで実行し、サーバー負荷をかけない設計とした。座標系はmm（データ）・px（画面）・pt（PDF）の3系統を変換レイヤーで統一管理し、ズームや用紙回転時にも正確な位置計算を実現している。" },
+            { dt: "工夫点", dd: "日本語縦書きでは句読点やカナの位置補正を1文字ずつ計算し、pdf-libの制約内で自然な縦組みを実現した。キャンバスの90°/180°/270°回転時にはクリック座標を逆回転行列で変換し、回転状態でも直感的にフィールドを配置できるようにした。テキストフィールドの操作には30段階のUndo/Redo履歴を実装し、新規フィールドは直前のフィールド設定を引き継ぐことで入力効率を向上させている。フォントはCache APIでキャッシュし、PDF生成時の帯域消費を抑えた。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://sakutto-inji.chiteijin315.workers.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-inji.chiteijin315.workers.dev/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/sakutto-inji",
+        imageMain: "/assets/img/worksApp_sakutto-inji.png"
+    },
+    {
+        id: "sakutto-sakubun",
+        title: "さくっと作文",
+        category: "WebApp ｜ 自主制作",
+        introduction: "AIが質問形式で情報を引き出し、作文作成を支援するWebアプリ。作文の自動生成・ヒント表示・手書き作文の画像添削の3モードを備え、小学1年から一般まで対象レベルに応じた出力を行う。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / Next.js / TypeScript / Tailwind CSS v4 / Neon / supabaseAuth / vercel / GeminiAPI",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "3日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "AIとの質疑応答を通じて作文に必要な情報を引き出し、作文の自動生成またはヒント提示を行うWebアプリ。手書き作文の画像をアップロードするとOCR・誤字脱字・ルール評価・良い点・改善点を添削する機能も備える。対象レベル（小学1年〜一般）に応じて語彙や表現を自動で切り替え、子どもでも使いやすい設計にした。" },
+            { dt: "アプリの特徴", dd: "AIが1問ずつ質問し、回答をもとに指定文字数前後の作文を生成する「作文完成モード」と、書き方の手順・コツをステップ形式で提示する「ヒントモード」の2つの出力を用意。手書き作文の画像添削ではGemini Visionで文字を読み取り、誤字脱字・文字数・ルール遵守を評価する。過去に入力したテーマの履歴表示や、作文ルールの保存・呼び出し機能により繰り返し利用時の手間を軽減。音声入力にも対応し、キーボード操作が苦手なユーザーでも回答を入力できるようにした。" },
+            { dt: "コーディング", dd: "Next.js 16（App Router）とTypeScriptで構築し、Gemini APIの呼び出しとDB操作はすべてServer Actionsでサーバー側に閉じ、APIキーをクライアントに露出しない設計にした。認証はSupabase Auth、ユーザーごとのテーマ履歴・保存ルールはNeon（PostgreSQL）で管理。画像添削ではクライアント側でCanvas APIによるリサイズ・圧縮を行い、Server Actionのペイロード制限内に収めている。Geminiの応答からTHOUGHTブロックを除去する後処理や、ヒント本文を◆・＜＞・・で整形して段階表示する独自パーサーも実装した" },
+            { dt: "工夫点", dd: "質疑応答のフローでは、AIが「十分な情報が集まった」と判断するまで自動で質問を続け、途中でスキップや早期終了も選べる柔軟な進行にした。ヒントモードでは「ワンステップずつ表示」と「まるごと表示」を選択でき、自分のペースで確認できる。作文ルールの保存フローでは、sessionStorageで設定を退避し保存完了後に質疑応答へ自動遷移させることで、画面遷移によるコンテキスト消失を防いだ。画像添削の注意書きは対象レベルに応じてひらがな表記に切り替え、低学年の子どもが自分で読める配慮を加えた。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://sakutto-sakubun.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-sakubun.vercel.app/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/sakutto-sakubun",
+        imageMain: "/assets/img/worksApp_sakutto-sakubun.png"
     },
     {
         id: "recipe-search-next",
@@ -291,6 +366,144 @@ export const worksApp: WorkApp[] = [
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/meigen-app-next",
         imageMain: "/assets/img/worksApp_meigen-app-next.png"
+    },
+    {
+        id: "ouchi-zaiko-cloudflare",
+        title: "おうちで在庫くん (Cloudflare版)",
+        category: "WebApp ｜ 自主制作",
+        introduction:
+            "家庭の在庫を「おうち」単位で共有・管理できるPWA対応Webアプリ。ジャンル別の在庫リスト、次回購入リスト、複数ユーザーでの共有機能を備え、スマホのホーム画面からネイティブアプリのように使える。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Cloudflare Workers / Cloudflare D1 / @opennextjs/cloudflare / Tailwind CSS v4 / DaisyUI 5",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "3日" },
+        ],
+        description: [
+            {
+                dt: "制作概要",
+                dd: "家庭内の在庫をジャンル別に登録・管理し、「おうち」単位で家族やルームメイトと共有できるWebアプリ。元々 Firebase 版として開発していたものを、Cloudflare Workers + D1（SQLite）構成にフルリプレースした。認証・データベースをすべてCloudflareエッジ上で完結させることで、外部サービスへの依存を最小限に抑えた構成となっている。",
+            },
+            {
+                dt: "アプリの特徴",
+                dd: "ジャンル別のタブ切り替えで在庫を一覧表示し、数量の増減をワンタップで操作可能。各商品に「定数（目標在庫数）」を設定でき、不足分を「次回購入リスト」にワンタップで追加できる。共有設定でオーナーが他ユーザーをメールアドレスで招待し、同じ在庫データをリアルタイムに共同管理できる。PWA対応により、スマホのホーム画面に追加してネイティブアプリのように利用可能。",
+            },
+            {
+                dt: "コーディング",
+                dd: "Next.js 15（App Router）と TypeScript で構築し、@opennextjs/cloudflare で Cloudflare Workers にデプロイ。認証は Web Crypto API を用いた JWT（HMAC-SHA256）+ PBKDF2 パスワードハッシュを自前実装し、HttpOnly Cookie で管理。データベースは Cloudflare D1（SQLite）で、homes・users・genres・items のリレーショナル設計とし、次回購入リストは VIEW で実装してデータの二重管理を回避した。Service Worker は手書きで実装し、静的アセットはキャッシュファースト、APIはネットワークオンリー、ページはネットワークファーストとキャッシュ戦略を使い分けている。",
+            },
+            {
+                dt: "工夫点",
+                dd: "数量変更時にリストの並び順が変わらないよう、ジャンル切替・初回ロード時のみソートし、以降は順序を維持したまま値だけ差し替える設計にした。数量更新後のデータ再取得では loading フラグを立てずにサイレント更新し、DOM の破棄・再構築によるスクロール位置リセットを防止。Firebase から D1 への移行では、Firestore のドキュメント構造をリレーショナルスキーマに再設計し、循環参照を避けるため users.home_id を非正規化キャッシュとして扱う構成にした。ログイン後の画面遷移では router.push ではなく window.location.href を使用し、PWA 環境での soft navigation 失敗を回避している。",
+            },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://ouchi-zaiko.chiteijin315.workers.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://ouchi-zaiko.chiteijin315.workers.dev/</a>',
+            },
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/ouchi-zaiko-cloudflare",
+        imageMain: "/assets/img/worksApp_ouchi-zaiko.png",
+    },
+    {
+        "id": "loto6-check",
+        "title": "ロト6速攻チェック",
+        "category": "WebApp ｜ 自主制作",
+        "introduction": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
+        "role": "Direction / Design / Coding",
+        "tools": "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Cloud Run / cron-job.org",
+        "period": [
+            { "task": "企画・ワイヤーフレーム", "duration": "1日" },
+            { "task": "デザイン", "duration": "1日" },
+            { "task": "コーディング", "duration": "4日" }
+        ],
+        "description": [
+            { "dt": "制作概要", "dd": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるWebアプリ。公式サイトから最新の当選情報を自動取得してデータベースに格納し、ユーザーが登録した番号との照合結果を期間指定で確認できる機能を実装した。" },
+            { "dt": "アプリの特徴", "dd": "過去のCSVデータを一括インポートできるほか、Puppeteerを使った自動スクレイピングにより毎週2回（火曜・金曜の朝）に最新の当選情報を自動更新する仕組みを構築。フロントエンドとバックエンドをVercelとCloud Runに分離し、重い処理でも安定動作する設計にした。" },
+            { "dt": "コーディング", "dd": "Next.js（App Router）とTypeScriptで構築し、Neon（PostgreSQL）で当選データを管理。Supabase Authenticationでユーザー認証を実装した。スクレイピング機能は別プロジェクト（loto6-auto-update）として分離し、cron-job.orgで定期実行。DaisyUIとTailwindCSSでシンプルなUIを実現した。" },
+            { "dt": "工夫点", "dd": "日付のタイムゾーン問題やUI表示の細かな調整など、実際の動作確認を通じて改善を重ねた。データベースのUPSERT処理で重複登録を防ぎ、エラーハンドリングとロギングを充実させて運用時のトラブルを最小化。フロントエンドと自動更新処理を完全に分離することで、それぞれの最適な環境でデプロイできる柔軟性を持たせた。" },
+            {
+                "dt": "デモURL",
+                "dd": '<a href="https://loto6-check.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.vercel.app/</a>'
+            }
+        ],
+        "github": "https://github.com/Itou-Hiroaki-qqq/loto6-check",
+        "imageMain": "/assets/img/worksApp_loto6-check.png"
+    },
+    {
+        id: "sakutto-sakubun-cloudflare",
+        title: "さくっと作文 (Cloudflare版)",
+        category: "WebApp ｜ 自主制作",
+        introduction: "AI（Gemini）と対話しながら作文を作れるWebアプリ。テーマ・文字数・学年を設定するとAIが質問を投げかけ、答えていくだけで作文が完成する。手書き作文の写真を撮って添削する機能も搭載。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / Next.js 15 / TypeScript / Cloudflare Workers / Cloudflare D1 / Tailwind CSS v4 / Gemini API / PWA",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "2日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "AI（Google Gemini）を活用した日本語作文支援Webアプリ。テーマ・目標文字数・対象学年を設定すると、AIが対話形式で質問を投げかけ、ユーザーが答えていくだけで作文の素材が集まり、完成文やヒントを生成できる。手書き作文の写真を撮影して添削する機能も備えており、小学1年生から一般まで幅広い対象レベルに対応している。" },
+            { dt: "アプリの特徴", dd: "Q&A形式でAIが1問ずつ質問し、回答を重ねると「作文を書く」か「ヒントを見る」かを選べる構成。ヒントは一括表示とステップ表示を切り替え可能。手書き作文の画像添削では、誤字脱字・文字数・ルール遵守・良い点・改善点をJSON形式で構造化して返す。音声入力にも対応し、テーマ履歴の自動保存やカスタムルールの保存・読み込み機能で、繰り返し利用しやすい設計にしている。学年別に使用漢字を制限した出力にも対応。" },
+            { dt: "コーディング", dd: "Next.js 15（App Router）と TypeScript で構築し、Cloudflare Workers（@opennextjs/cloudflare）上にデプロイ。データベースは Cloudflare D1（SQLite）を使用し、認証は JWT を Web Crypto API で自前実装した。Gemini API は Cloudflare Workers 上で @google/genai が動作しないため、fetch() による REST API 直接呼び出しで統合。パスワードハッシュも bcrypt が使えないため PBKDF2（Web Crypto API）で実装している。PWA 対応として手書きの Service Worker を導入し、ホーム画面追加・オフラインキャッシュに対応した。" },
+            { dt: "工夫点", dd: "Cloudflare Workers の制約（Node.js ランタイムが使えない）に対し、JWT 認証・パスワードハッシュ・AI API 呼び出しのすべてを Web Crypto API と fetch() のみで実装した。Gemini の応答に混入する THOUGHT ブロック（推論過程）を自動除去するフィルタを設け、ユーザーに不要なテキストが表示されないようにした。画像添削では撮影画像をクライアント側で圧縮してから送信し、通信量を削減。質問フェーズでは「もりこみたいことはありますか？」の自然な会話フローを経てから終了判定に移る設計にし、情報収集の打ち切りが唐突にならないよう工夫した。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://sakutto-sakubun.chiteijin315.workers.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-sakubun.chiteijin315.workers.dev/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/sakutto-sakubun-cloudflare",
+        imageMain: "/assets/img/worksApp_sakutto-sakubun.png"
+    },
+    {
+        id: "sakutto-task-cloudflare",
+        title: "さくっとタスク（Cloudflare版）",
+        category: "WebApp ｜ 自主制作",
+        introduction: "「さくっとタスク」をVercel + Neon構成からCloudflare Workers + D1構成へフルリプレイスした移行版。認証もSupabase Authから自前JWT（Web Crypto API）に置き換え、インフラ費用ゼロで運用可能にした。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Cloudflare Workers / Cloudflare D1 / @opennextjs/cloudflare / Web Crypto API / GeminiAPI / Resend / Tailwind CSS v4 / DaisyUI v5",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "4日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "既存の「さくっとタスク」（Vercel + Neon PostgreSQL + Supabase Auth）を、Cloudflare Workers + D1（SQLite）+ 自前JWT認証にフルリプレイスした移行プロジェクト。機能はそのままに、インフラをCloudflareエコシステムに統一することで、無料枠内での運用とエッジでの高速レスポンスを実現した。" },
+            { dt: "アプリの特徴", dd: "元版の全機能（カレンダー表示・繰り返しタスク7種類・記念日管理・AI予定読込・メール通知・PWA）を維持しつつ、新機能として未完了タスクの自動引継ぎを追加。過去30日以内の未完了タスクを今日のリスト最後尾に警告マーク付きで自動表示し、タスクの取りこぼしを防ぐ。Cloudflare Cron Triggersによるサーバーレス定期実行で、外部Cronサービスへの依存も解消した。" },
+            { dt: "コーディング", dd: "Next.js 15（App Router）を@opennextjs/cloudflareでCloudflare Workersにデプロイ。認証はWeb Crypto APIでPBKDF2パスワードハッシュとHMAC-SHA256によるJWT署名を自前実装し、HttpOnly Cookieで管理。DBはPostgreSQLからSQLite（D1）への変換に伴い、UUID生成・BOOLEAN型・配列型・日時型などの差異をすべてアプリ層で吸収。D1のバインドパラメータ上限（100個）に対応したバッチ処理や、Cloudflare Workers（UTC環境）での日本時間判定ロジックも実装した。" },
+            { dt: "工夫点", dd: "Neon→D1へのデータ移行スクリプトを自作し、既存データ（4000行超）をSQLite形式に変換して移行。認証ではSupabase AuthのユーザーIDと自前認証のIDが異なるため、マッピングテーブルで全リレーションを正しく書き換えた。未完了タスク引継ぎ機能では、サーバーサイドで引継ぎタスクをマージして返す設計を採用し、フロント側の複雑化を回避。Optimistic更新やlocalStorageキャッシュ戦略は元版の設計を踏襲しつつ、Cloudflare環境特有の制約（D1パラメータ上限・UTC環境でのJST判定）に合わせて最適化した。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://sakutto-task.chiteijin315.workers.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-task.chiteijin315.workers.dev/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/sakutto-task-cloudflare",
+        imageMain: "/assets/img/worksApp_sakutto-task.png"
+    },
+    {
+        id: "hyakunin-goromaru-cloudflare",
+        title: "百人一首 -ゴロでマル覚え-（Cloudflare版）",
+        category: "WebApp ｜ 自主制作",
+        introduction: "百人一首をゴロ合わせで覚える学習アプリ。4首〜100首の段階的テスト、音声再生、間違えやすい問題の特訓、コンピューター対戦、復習リストなど多彩な学習モードを搭載し、PWA対応でスマホにインストールして使える。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS v4 / DaisyUI 5 / Cloudflare Workers / D1 / R2 / Howler.js / JWT自前実装",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "7日" }
+        ],
+        description: [
+            { dt: "制作概要", dd: "百人一首100首すべてにオリジナルのゴロ合わせ（語呂合わせ）を用意し、音声と解説付きで暗記を支援する学習Webアプリ。段階的なテストで少しずつ覚え、間違えた問題は自動で復習リストに追加される仕組み。ログインすると学習進捗がサーバーに保存され、端末を変えても続きから学習できる。" },
+            { dt: "アプリの特徴", dd: "4首・8首・20首・100首と段階的にテスト範囲が広がるステップアップ式の学習設計。上の句・下の句・ゴロ合わせの音声を自動再生し、耳からも記憶を定着させる。間違えやすい上の句25セット・下の句24セットを集めた特訓モード、全100首をシャッフルして出題する実践問題、3段階の難易度で対戦できるコンピューター対戦モードを搭載。実践問題と対戦モードは100首テストをクリアすると解放される進捗連動型の設計にしている。" },
+            { dt: "コーディング", dd: "Next.js 15（App Router）と TypeScript でフロントエンドを構築し、Cloudflare Workers にデプロイ。データベースは Cloudflare D1（SQLite）、音声ファイルは Cloudflare R2 から配信し、Howler.js で再生を制御。認証は Web Crypto API を使った JWT の自前実装（PBKDF2 + HMAC-SHA256）で、Cookie と Bearer Token の両方に対応。百人一首の縦書き表示では、ゴロ合わせ該当箇所を赤色でハイライトする独自のテキスト処理ロジックを実装した。" },
+            { dt: "工夫点", dd: "ゴロ合わせのハイライト処理では、濁点・半濁点の揺れ（が→か、べ→へ等）やスペースを含む文字列でも正確に該当範囲を特定するロジックを構築。コンピューター対戦では、難易度に応じた応答遅延（初級4秒・中級2秒・上級0.5秒）を設け、ゲーム性を持たせた。復習リストは localStorage で即時反映しつつ、テスト結果やベストスコアは API 経由で D1 に永続化する設計とし、ログインの有無に関わらず学習を始められるようにした。PWA 対応によりスマホのホーム画面から起動でき、通学中などの隙間時間での学習を想定している。" },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://hyakunin-goromaru.chiteijin315.workers.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://hyakunin-goromaru.chiteijin315.workers.dev/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/hyakunin-goromaru-cloudflare",
+        imageMain: "/assets/img/worksApp_hyakunin-goromaru.png"
     },
 ];
 
