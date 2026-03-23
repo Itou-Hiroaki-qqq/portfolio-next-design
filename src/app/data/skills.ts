@@ -146,6 +146,20 @@ export const skills: SkillGroup[] = [
                 text: "エメットによる効率的コーディング、拡張機能活用、Git連携が可能。"
             },
             {
+                id: "cursor",
+                name: "Cursor",
+                img: "/assets/img/skills_cursol.png",
+                link: "https://icons8.com/icon/Kwms9QBiZhG2/cursor-ai",
+                text: "コード補完やチャットによるコード生成・リファクタリングを活用し、開発スピードの向上に利用。"
+            },
+            {
+                id: "claude-code",
+                name: "Claude Code",
+                img: "/assets/img/skills_claude.png",
+                link: "https://icons8.com/icon/zQjzFjPpT2Ek/claude-ai",
+                text: "要件定義・計画作成からコード実装・レビュー・修正まで、開発の全工程で活用。CLAUDE.mdによるプロジェクト固有のルール管理、Skills・Agent・Memory・Hookなどの機能を組み合わせた効率的な運用が可能。"
+            },
+            {
                 id: "docker",
                 name: "Docker",
                 img: "/assets/img/skills_docker.png",
