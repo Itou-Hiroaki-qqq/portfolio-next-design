@@ -77,22 +77,23 @@ export default function ContactForm() {
             <form
                 onSubmit={submitForm}
                 className="
-                    max-w-[600px] mx-auto mt-6 p-8 bg-white rounded-xl 
-                    shadow-[0_4px_12px_rgba(0,0,0,0.08),0_-2px_8px_rgba(0,0,0,0.04)]
+                    max-w-[600px] mx-auto mt-6 p-8 rounded-xl
+                    bg-[#141420] border border-[#1E1E2E]
+                    shadow-[0_4px_24px_rgba(0,0,0,0.3)]
                 "
             >
                 {/* 名前 */}
                 <div className="mb-6">
-                    <label className="font-bold block mb-2">
+                    <label className="font-bold block mb-2 text-[#F8FAFC]">
                         名前
-                        <span className="text-white bg-red-500 text-xs px-2 py-0.5 rounded ml-2">
+                        <span className="text-white bg-[#2563EB] text-xs px-2 py-0.5 rounded ml-2">
                             必須
                         </span>
                     </label>
 
                     <div className="flex gap-4">
                         <div className="flex-1">
-                            <label htmlFor="lastName" className="text-sm">
+                            <label htmlFor="lastName" className="text-sm text-[#94A3B8]">
                                 姓
                             </label>
                             <input
@@ -102,12 +103,12 @@ export default function ContactForm() {
                                 value={form.lastName}
                                 onChange={handleChange}
                                 required
-                                className="w-full mt-1 p-3 border border-gray-300 rounded-md text-base"
+                                className="w-full mt-1 p-3 border border-[#1E1E2E] rounded-md text-base bg-[#0A0A0F] text-[#E2E8F0] placeholder-[#64748B] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] transition"
                             />
                         </div>
 
                         <div className="flex-1">
-                            <label htmlFor="firstName" className="text-sm">
+                            <label htmlFor="firstName" className="text-sm text-[#94A3B8]">
                                 名
                             </label>
                             <input
@@ -117,7 +118,7 @@ export default function ContactForm() {
                                 value={form.firstName}
                                 onChange={handleChange}
                                 required
-                                className="w-full mt-1 p-3 border border-gray-300 rounded-md text-base"
+                                className="w-full mt-1 p-3 border border-[#1E1E2E] rounded-md text-base bg-[#0A0A0F] text-[#E2E8F0] placeholder-[#64748B] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] transition"
                             />
                         </div>
                     </div>
@@ -125,9 +126,9 @@ export default function ContactForm() {
 
                 {/* 会社名 */}
                 <div className="mb-6">
-                    <label className="font-bold block mb-1">
+                    <label className="font-bold block mb-1 text-[#F8FAFC]">
                         会社名
-                        <span className="text-white bg-gray-500 text-xs px-2 py-0.5 rounded ml-2">
+                        <span className="text-[#94A3B8] bg-[#1E1E2E] text-xs px-2 py-0.5 rounded ml-2">
                             任意
                         </span>
                     </label>
@@ -138,19 +139,19 @@ export default function ContactForm() {
                         placeholder="会社名"
                         value={form.company}
                         onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md text-base"
+                        className="w-full p-3 border border-[#1E1E2E] rounded-md text-base bg-[#0A0A0F] text-[#E2E8F0] placeholder-[#64748B] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] transition"
                     />
 
-                    <small className="block text-sm text-gray-600 mt-1">
+                    <small className="block text-sm text-[#64748B] mt-1">
                         特になければ未記入で結構です。
                     </small>
                 </div>
 
                 {/* メール */}
                 <div className="mb-6">
-                    <label className="font-bold block mb-1">
+                    <label className="font-bold block mb-1 text-[#F8FAFC]">
                         メールアドレス
-                        <span className="text-white bg-red-500 text-xs px-2 py-0.5 rounded ml-2">
+                        <span className="text-white bg-[#2563EB] text-xs px-2 py-0.5 rounded ml-2">
                             必須
                         </span>
                     </label>
@@ -162,13 +163,13 @@ export default function ContactForm() {
                         value={form.email}
                         onChange={handleChange}
                         required
-                        className="w-full p-3 border border-gray-300 rounded-md text-base"
+                        className="w-full p-3 border border-[#1E1E2E] rounded-md text-base bg-[#0A0A0F] text-[#E2E8F0] placeholder-[#64748B] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] transition"
                     />
                 </div>
 
                 {/* メール確認 */}
                 <div className="mb-6">
-                    <label className="font-bold block mb-1">
+                    <label className="font-bold block mb-1 text-[#F8FAFC]">
                         確認のため再度ご入力ください
                     </label>
 
@@ -179,15 +180,15 @@ export default function ContactForm() {
                         value={form.confirmEmail}
                         onChange={handleChange}
                         required
-                        className="w-full p-3 border border-gray-300 rounded-md text-base"
+                        className="w-full p-3 border border-[#1E1E2E] rounded-md text-base bg-[#0A0A0F] text-[#E2E8F0] placeholder-[#64748B] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] transition"
                     />
                 </div>
 
                 {/* メッセージ */}
                 <div className="mb-6">
-                    <label className="font-bold block mb-1">
+                    <label className="font-bold block mb-1 text-[#F8FAFC]">
                         お問い合わせ内容
-                        <span className="text-white bg-red-500 text-xs px-2 py-0.5 rounded ml-2">
+                        <span className="text-white bg-[#2563EB] text-xs px-2 py-0.5 rounded ml-2">
                             必須
                         </span>
                     </label>
@@ -199,28 +200,28 @@ export default function ContactForm() {
                         value={form.message}
                         onChange={handleChange}
                         required
-                        className="w-full p-3 border border-gray-300 rounded-md text-base resize-y"
+                        className="w-full p-3 border border-[#1E1E2E] rounded-md text-base bg-[#0A0A0F] text-[#E2E8F0] placeholder-[#64748B] focus:border-[#2563EB] focus:outline-none focus:ring-1 focus:ring-[#2563EB] transition resize-y"
                     />
                 </div>
 
                 {/* フィードバックメッセージ */}
                 {status === "emailMismatch" && (
-                    <p className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+                    <p className="mb-4 p-3 bg-red-900/30 text-red-400 border border-red-800/50 rounded-md text-sm">
                         メールアドレスが一致しません。再度ご確認ください。
                     </p>
                 )}
                 {status === "success" && (
-                    <p className="mb-4 p-3 bg-green-100 text-green-700 rounded-md text-sm">
+                    <p className="mb-4 p-3 bg-green-900/30 text-green-400 border border-green-800/50 rounded-md text-sm">
                         送信が完了しました！後ほどご連絡いたします。
                     </p>
                 )}
                 {status === "emailFail" && (
-                    <p className="mb-4 p-3 bg-yellow-100 text-yellow-700 rounded-md text-sm">
+                    <p className="mb-4 p-3 bg-yellow-900/30 text-yellow-400 border border-yellow-800/50 rounded-md text-sm">
                         内容は受け付けましたが、メール通知の送信に失敗しました。
                     </p>
                 )}
                 {status === "error" && (
-                    <p className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+                    <p className="mb-4 p-3 bg-red-900/30 text-red-400 border border-red-800/50 rounded-md text-sm">
                         送信に失敗しました。しばらくしてから再度お試しください。
                     </p>
                 )}
@@ -230,8 +231,9 @@ export default function ContactForm() {
                     type="submit"
                     disabled={status === "loading"}
                     className="
-                        w-full py-3 text-white font-bold rounded-md
-                        bg-blue-500 hover:bg-blue-600 transition
+                        w-full py-3 text-white font-bold rounded-md cursor-pointer
+                        bg-[#2563EB] hover:bg-[#1D4ED8] transition
+                        hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]
                         disabled:opacity-60 disabled:cursor-not-allowed
                     "
                 >

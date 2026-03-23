@@ -24,7 +24,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "百人一首を語呂合わせで覚える学習アプリ。上の句・下の句の学習と、4首・8首・20首の範囲テスト、まぎらわしい句に特化した問題で段階的に習得できる。音声再生とクリア状況の保存で、継続しやすい構成にしている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Neon / Supabase / Vercel / Cloudflare R2 / Howler",
+        tools: "Figma / React / Next.js / TypeScript / Neon / Supabase Auth / Cloudflare R2 / Howler.js / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -61,7 +61,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "カレンダーとタスクリストが一体化したタスク管理アプリ。繰り返しタスクや記念日設定、通知設定の他に、予定表の画像やPDFを読み込みタスク化する機能も備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / GeminiAPI / cron-job.org",
+        tools: "Figma / React / Next.js / TypeScript / Neon / Supabase Auth / Gemini API / cron-job.org / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "3日" },
             { task: "デザイン", duration: "1日" },
@@ -86,7 +86,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / / TailwindCSS / TypeScript / Firebase / vercel",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / Firebase / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -111,7 +111,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "ロト6の購入番号を登録しておくと、当選番号と自動で照合して結果を表示するWebアプリ。当選番号は外部サービス経由で定期的に自動取得され、常に最新の状態が保たれる。PWA対応でスマホのホーム画面からも利用可能。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Cloudflare Workers / Cloudflare D1 / OpenNext / daisyUI / cron-job.org",
+        tools: "Figma / React / Next.js / TypeScript / DaisyUI / Cloudflare Workers / Cloudflare D1 / OpenNext / cron-job.org",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
@@ -136,7 +136,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "習い事などの連絡内容を、日付順に自動整理して見やすく表示するアプリ。連絡文を貼り付けるだけで、日付情報や種別（試合・練習など）、持ち物などをAIで自動的に解析し、分類してカード表示することができる。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TailwindCSS / TypeScript / Firebase / GeminiAPI / vercel",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / Firebase / Gemini API / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "3日" },
             { task: "デザイン", duration: "1日" },
@@ -161,7 +161,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "教科書やドリルの写真をAIが解析し、その内容に基づいた問題を出題・採点・解説してくれる復習アプリ。小学1年〜中学3年の主要5教科に対応し、学習履歴からテスト対策問題を生成する機能も備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Vite / TypeScript / Hono / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / Drizzle ORM / Tailwind CSS v4 / shadcn&sol;ui / zustand / GeminiAPI",
+        tools: "Figma / React / Vite / TypeScript / Hono / Tailwind CSS / shadcn/ui / zustand / Drizzle ORM / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / Gemini API",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "3日" },
             { task: "デザイン", duration: "2日" },
@@ -186,7 +186,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "記入用紙をスキャンして取り込み、画面上でテキストの配置位置を指定して、ブランクの実物用紙に直接印字できるWebアプリ。テンプレートの保存・複製・エクスポートにも対応し、繰り返し使う書類の印字作業を効率化する。",
         role: "Direction / Design / Coding",
-        tools: "Figma / Next.js 15 / TypeScript / Tailwind CSS v4 / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / Better Auth / pdf-lib / pdfjs-dist",
+        tools: "Figma / Next.js / TypeScript / Tailwind CSS / Better Auth / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / pdf-lib / pdfjs-dist",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -211,7 +211,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "AIが質問形式で情報を引き出し、作文作成を支援するWebアプリ。作文の自動生成・ヒント表示・手書き作文の画像添削の3モードを備え、小学1年から一般まで対象レベルに応じた出力を行う。",
         role: "Direction / Design / Coding",
-        tools: "Figma / Next.js / TypeScript / Tailwind CSS v4 / Neon / supabaseAuth / vercel / GeminiAPI",
+        tools: "Figma / Next.js / TypeScript / Tailwind CSS / Neon / Supabase Auth / Gemini API / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -236,7 +236,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "食材を入力すると、すぐに作れるレシピを探すことができるアプリ。気に入ったレシピはお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TailwindCSS / TypeScript / supabase / 楽天API / vercel",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / Supabase / 楽天API / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -298,7 +298,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "偉人や著名人の名言をランダムに表示するアプリ。気に入った言葉はお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / Vue.js / TypeScript / firebase / さくらレンタルサーバー",
+        tools: "Figma / Vue.js / TypeScript / Firebase / さくらレンタルサーバー",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -323,7 +323,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / PHP / Laravel / supabase / Fly.io / docker",
+        tools: "Figma / PHP / Laravel / Supabase / Fly.io / Docker",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -348,7 +348,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "偉人や著名人の名言をランダムに表示するアプリ。気に入った言葉はお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / firebase / vercel",
+        tools: "Figma / React / Next.js / TypeScript / Firebase / Vercel",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "2日" },
             { task: "デザイン", duration: "1日" },
@@ -374,7 +374,7 @@ export const worksApp: WorkApp[] = [
         introduction:
             "家庭の在庫を「おうち」単位で共有・管理できるPWA対応Webアプリ。ジャンル別の在庫リスト、次回購入リスト、複数ユーザーでの共有機能を備え、スマホのホーム画面からネイティブアプリのように使える。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Cloudflare Workers / Cloudflare D1 / @opennextjs/cloudflare / Tailwind CSS v4 / DaisyUI 5",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / DaisyUI / Cloudflare Workers / Cloudflare D1 / OpenNext",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
@@ -411,7 +411,7 @@ export const worksApp: WorkApp[] = [
         "category": "WebApp ｜ 自主制作",
         "introduction": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
         "role": "Direction / Design / Coding",
-        "tools": "Figma / React / Next.js / TypeScript / Neon / supabaseAuth / vercel / Cloud Run / cron-job.org",
+        "tools": "Figma / React / Next.js / TypeScript / Neon / Supabase Auth / Cloud Run / cron-job.org / Vercel",
         "period": [
             { "task": "企画・ワイヤーフレーム", "duration": "1日" },
             { "task": "デザイン", "duration": "1日" },
@@ -436,7 +436,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "AI（Gemini）と対話しながら作文を作れるWebアプリ。テーマ・文字数・学年を設定するとAIが質問を投げかけ、答えていくだけで作文が完成する。手書き作文の写真を撮って添削する機能も搭載。",
         role: "Direction / Design / Coding",
-        tools: "Figma / Next.js 15 / TypeScript / Cloudflare Workers / Cloudflare D1 / Tailwind CSS v4 / Gemini API / PWA",
+        tools: "Figma / Next.js / TypeScript / Tailwind CSS / Cloudflare Workers / Cloudflare D1 / OpenNext / Gemini API",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
@@ -461,7 +461,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "「さくっとタスク」をVercel + Neon構成からCloudflare Workers + D1構成へフルリプレイスした移行版。認証もSupabase Authから自前JWT（Web Crypto API）に置き換え、インフラ費用ゼロで運用可能にした。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Cloudflare Workers / Cloudflare D1 / @opennextjs/cloudflare / Web Crypto API / GeminiAPI / Resend / Tailwind CSS v4 / DaisyUI v5",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / DaisyUI / Cloudflare Workers / Cloudflare D1 / OpenNext / Gemini API / Resend",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
@@ -486,7 +486,7 @@ export const worksApp: WorkApp[] = [
         category: "WebApp ｜ 自主制作",
         introduction: "百人一首をゴロ合わせで覚える学習アプリ。4首〜100首の段階的テスト、音声再生、間違えやすい問題の特訓、コンピューター対戦、復習リストなど多彩な学習モードを搭載し、PWA対応でスマホにインストールして使える。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS v4 / DaisyUI 5 / Cloudflare Workers / D1 / R2 / Howler.js / JWT自前実装",
+        tools: "Figma / React / Next.js / TypeScript / Tailwind CSS / DaisyUI / Cloudflare Workers / Cloudflare D1 / Cloudflare R2 / Howler.js / OpenNext",
         period: [
             { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
