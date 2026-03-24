@@ -132,6 +132,13 @@ export const skills: SkillGroup[] = [
                 link: "https://icons8.com/icon/sH0rW2TvYdr9/supabase",
                 text: "PostgreSQLベースのデータベース操作、API自動生成、認証機能の利用が可能。Next.jsとの連携によるアプリ開発を経験。"
             },
+            {
+                id: "cloudflare",
+                name: "Cloudflare",
+                img: "/assets/img/skills_cloudflare.png",
+                link: "https://icons8.com/icon/fUGx53gD9Jof/cloudflare",
+                text: "Workers によるサーバーレス実行環境、D1（SQLiteベースDB）でのデータ管理、R2 での画像・音声ファイルの保存・配信が可能。OpenNext を用いた Next.js アプリの Cloudflare へのデプロイも経験。"
+            },
         ]
     },
     {
