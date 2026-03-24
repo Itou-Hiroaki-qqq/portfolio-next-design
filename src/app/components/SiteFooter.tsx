@@ -20,10 +20,6 @@ export default function SiteFooter() {
                             </li>
 
                             <li className="footer_nav-item">
-                                <Link href="/#work-experience">Work Experience</Link>
-                            </li>
-
-                            <li className="footer_nav-item">
                                 <Link href="/#skills">Skills</Link>
                             </li>
 
@@ -32,21 +28,25 @@ export default function SiteFooter() {
                                 <span className="footer_nav_link">Works</span>
                                 <ul className="footer_nav_sublist">
                                     <li className="footer_nav_subitem">
-                                        <Link href="/#works">Works - Website</Link>
+                                        <Link href="/#works-app">Works - App</Link>
                                     </li>
                                     <li className="footer_nav_subitem">
-                                        <Link href="/#works-app">Works - App</Link>
+                                        <Link href="/#works">Works - Website</Link>
                                     </li>
                                 </ul>
                             </li>
 
                             {/* SP専用 */}
                             <li className="footer_nav-item footer_nav-item--sp">
-                                <Link href="/#works">Works - Website</Link>
+                                <Link href="/#works-app">Works - App</Link>
                             </li>
 
                             <li className="footer_nav-item footer_nav-item--sp">
-                                <Link href="/#works-app">Works - App</Link>
+                                <Link href="/#works">Works - Website</Link>
+                            </li>
+
+                            <li className="footer_nav-item">
+                                <Link href="/#work-experience">Work Experience</Link>
                             </li>
 
                             <li className="footer_nav-item">

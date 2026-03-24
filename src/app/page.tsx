@@ -45,9 +45,6 @@ export default function HomePage() {
           </ul>
         </section>
 
-        {/* Work Experience */}
-        <WorkExperienceList />
-
         {/* Skills */}
         <section className="skills s-wrapper" id="skills">
           <h2 className="section_title">Skills</h2>
@@ -68,11 +65,14 @@ export default function HomePage() {
           ))}
         </section>
 
+        {/* Works - App */}
+        <WorksAppList maxDisplay={9} showViewAllLink={true} />
+
         {/* Works */}
         <WorksList />
 
-        {/* Works - App */}
-        <WorksAppList maxDisplay={9} showViewAllLink={true} />
+        {/* Work Experience */}
+        <WorkExperienceList />
 
         {/* About */}
         <section className="about wrapper" id="about">

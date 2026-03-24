@@ -41,12 +41,6 @@ export default function SiteHeader() {
                         </li>
 
                         <li className="nav_item">
-                            <Link href="/#work-experience" onClick={closeMenu}>
-                                Work Experience
-                            </Link>
-                        </li>
-
-                        <li className="nav_item">
                             <Link href="/#skills" onClick={closeMenu}>Skills</Link>
                         </li>
 
@@ -55,16 +49,23 @@ export default function SiteHeader() {
                             <span className="nav_link">Works</span>
                             <ul className="nav_sublist">
                                 <li className="nav_subitem">
-                                    <Link href="/#works" onClick={closeMenu}>
-                                        Works - Website
-                                    </Link>
-                                </li>
-                                <li className="nav_subitem">
                                     <Link href="/#works-app" onClick={closeMenu}>
                                         Works - App
                                     </Link>
                                 </li>
+                                <li className="nav_subitem">
+                                    <Link href="/#works" onClick={closeMenu}>
+                                        Works - Website
+                                    </Link>
+                                </li>
                             </ul>
+                        </li>
+
+                        {/* SP専用：Works - App */}
+                        <li className="nav_item nav_item--sp">
+                            <Link href="/#works-app" onClick={closeMenu}>
+                                Works - App
+                            </Link>
                         </li>
 
                         {/* SP専用：Works - Website */}
@@ -74,10 +75,9 @@ export default function SiteHeader() {
                             </Link>
                         </li>
 
-                        {/* SP専用：Works - App */}
-                        <li className="nav_item nav_item--sp">
-                            <Link href="/#works-app" onClick={closeMenu}>
-                                Works - App
+                        <li className="nav_item">
+                            <Link href="/#work-experience" onClick={closeMenu}>
+                                Work Experience
                             </Link>
                         </li>
 
