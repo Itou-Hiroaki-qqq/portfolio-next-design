@@ -20,7 +20,7 @@ export type WorkApp = {
 export const worksApp: WorkApp[] = [
     {
         id: "hyakunin-goromaru",
-        title: "百人一首-ゴロでマル覚え-",
+        title: "百人一首-ゴロでマル覚え-（Next.js + Vercel版）",
         category: "WebApp ｜ 自主制作",
         introduction: "百人一首を語呂合わせで覚える学習アプリ。上の句・下の句の学習と、4首・8首・20首の範囲テスト、まぎらわしい句に特化した問題で段階的に習得できる。音声再生とクリア状況の保存で、継続しやすい構成にしている。",
         role: "Direction / Design / Coding",
@@ -57,7 +57,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "sakutto-task",
-        title: "さくっとタスク",
+        title: "さくっとタスク（Next.js + Vercel版）",
         category: "WebApp ｜ 自主制作",
         introduction: "カレンダーとタスクリストが一体化したタスク管理アプリ。繰り返しタスクや記念日設定、通知設定の他に、予定表の画像やPDFを読み込みタスク化する機能も備えている。",
         role: "Direction / Design / Coding",
@@ -82,7 +82,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "ouchi-zaiko-next",
-        title: "おうちで在庫くん",
+        title: "おうちで在庫くん（Next.js + Vercel版）",
         category: "WebApp ｜ 自主制作",
         introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
@@ -107,7 +107,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "loto6-check-cloudflare",
-        title: "ロト6チェック(Cloudflare版)",
+        title: "ロト6チェック（Next.js + Cloudflare版）",
         category: "WebApp ｜ 自主制作",
         introduction: "ロト6の購入番号を登録しておくと、当選番号と自動で照合して結果を表示するWebアプリ。当選番号は外部サービス経由で定期的に自動取得され、常に最新の状態が保たれる。PWA対応でスマホのホーム画面からも利用可能。",
         role: "Direction / Design / Coding",
@@ -207,7 +207,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "sakutto-sakubun",
-        title: "さくっと作文",
+        title: "さくっと作文（Next.js + Vercel版）",
         category: "WebApp ｜ 自主制作",
         introduction: "AIが質問形式で情報を引き出し、作文作成を支援するWebアプリ。作文の自動生成・ヒント表示・手書き作文の画像添削の3モードを備え、小学1年から一般まで対象レベルに応じた出力を行う。",
         role: "Direction / Design / Coding",
@@ -294,7 +294,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "genki-meigen-app",
-        title: "元気がでる偉人の言葉アプリ",
+        title: "元気がでる偉人の言葉アプリ（Vue.js版）",
         category: "WebApp ｜ 自主制作",
         introduction: "偉人や著名人の名言をランダムに表示するアプリ。気に入った言葉はお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
@@ -319,7 +319,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "ouchi-zaiko-larabel",
-        title: "おうちで在庫くん",
+        title: "おうちで在庫くん（Laravel版）",
         category: "WebApp ｜ 自主制作",
         introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
@@ -344,7 +344,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "meigen-app-next",
-        title: "元気がでる偉人の言葉アプリ",
+        title: "元気がでる偉人の言葉アプリ（Next.js + Vercel版）",
         category: "WebApp ｜ 自主制作",
         introduction: "偉人や著名人の名言をランダムに表示するアプリ。気に入った言葉はお気に入り登録していつでも見返すことができる機能を備えている。",
         role: "Direction / Design / Coding",
@@ -369,7 +369,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "ouchi-zaiko-cloudflare",
-        title: "おうちで在庫くん (Cloudflare版)",
+        title: "おうちで在庫くん（Next.js + Cloudflare版）",
         category: "WebApp ｜ 自主制作",
         introduction:
             "家庭の在庫を「おうち」単位で共有・管理できるPWA対応Webアプリ。ジャンル別の在庫リスト、次回購入リスト、複数ユーザーでの共有機能を備え、スマホのホーム画面からネイティブアプリのように使える。",
@@ -407,7 +407,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         "id": "loto6-check",
-        "title": "ロト6速攻チェック",
+        "title": "ロト6速攻チェック（Next.js + Vercel版）",
         "category": "WebApp ｜ 自主制作",
         "introduction": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
         "role": "Direction / Design / Coding",
@@ -432,7 +432,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "sakutto-sakubun-cloudflare",
-        title: "さくっと作文 (Cloudflare版)",
+        title: "さくっと作文（Next.js + Cloudflare版）",
         category: "WebApp ｜ 自主制作",
         introduction: "AI（Gemini）と対話しながら作文を作れるWebアプリ。テーマ・文字数・学年を設定するとAIが質問を投げかけ、答えていくだけで作文が完成する。手書き作文の写真を撮って添削する機能も搭載。",
         role: "Direction / Design / Coding",
@@ -457,7 +457,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "sakutto-task-cloudflare",
-        title: "さくっとタスク（Cloudflare版）",
+        title: "さくっとタスク（Next.js + Cloudflare版）",
         category: "WebApp ｜ 自主制作",
         introduction: "「さくっとタスク」をVercel + Neon構成からCloudflare Workers + D1構成へフルリプレイスした移行版。認証もSupabase Authから自前JWT（Web Crypto API）に置き換え、インフラ費用ゼロで運用可能にした。",
         role: "Direction / Design / Coding",
@@ -482,7 +482,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "hyakunin-goromaru-cloudflare",
-        title: "百人一首 -ゴロでマル覚え-（Cloudflare版）",
+        title: "百人一首 -ゴロでマル覚え-（Next.js + Cloudflare版）",
         category: "WebApp ｜ 自主制作",
         introduction: "百人一首をゴロ合わせで覚える学習アプリ。4首〜100首の段階的テスト、音声再生、間違えやすい問題の特訓、コンピューター対戦、復習リストなど多彩な学習モードを搭載し、PWA対応でスマホにインストールして使える。",
         role: "Direction / Design / Coding",
