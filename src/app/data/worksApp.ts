@@ -19,40 +19,28 @@ export type WorkApp = {
 
 export const worksApp: WorkApp[] = [
     {
-        id: "hyakunin-goromaru",
-        title: "百人一首-ゴロでマル覚え-（Next.js + Vercel版）",
+        id: "hyakunin-goromaru-android",
+        title: "百人一首-ゴロでマル覚え-（android版）",
         category: "WebApp ｜ 自主制作",
-        introduction: "百人一首を語呂合わせで覚える学習アプリ。上の句・下の句の学習と、4首・8首・20首の範囲テスト、まぎらわしい句に特化した問題で段階的に習得できる。音声再生とクリア状況の保存で、継続しやすい構成にしている。",
+        introduction: "百人一首の上の句・下の句を「語呂合わせ」で結びつけて覚える学習アプリのAndroid版。段階的な学習ステップ、4択テスト、復習、コンピューター対戦、実践リスニング問題まで備え、Google Playで一般公開している。",
         role: "Direction / Design / Coding",
-        tools: "Figma / React / Next.js / TypeScript / Neon / Supabase Auth / Cloudflare R2 / Howler.js / Vercel",
+        tools: "Figma / Expo SDK 55 / React Native / TypeScript / Expo Router / Zustand / TanStack Query / expo-audio / expo-sqlite / expo-secure-store / Reanimated / Cloudflare Workers / D1 / Android Studio",
         period: [
-            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "企画・ワイヤーフレーム", duration: "1日" },
             { task: "デザイン", duration: "1日" },
-            { task: "コーディング", duration: "10日" }
+            { task: "コーディング", duration: "7日" }
         ],
         description: [
-            {
-                dt: "制作概要",
-                dd: "百人一首を語呂合わせで効率的に覚えるためのWebアプリ。上の句（ひらがな）から下の句を選ぶ形式のテストと、まぎらわしい句に絞った練習で、段階的に暗記できるようにした。認証ユーザーはクリア状況を保存でき、学習リストで進捗を星マークで確認できる。"
-            },
-            {
-                dt: "アプリの特徴",
-                dd: "1～4首・5～8首など4首単位のブロックで「学習」「4首でテスト」「前回も入れて8首でテスト」を提供。20首ごとに「1～20首テスト」「21～40首テスト」などのまとめテストで習熟度を確認できる。間違えやすい問題では「その1」「その2」形式で上の句・下の句のまぎらわしい組み合わせを重点練習。語呂解説と音声（R2配信）で耳と目から覚えられる。Supabase認証とNeon DBでクリア情報を保存し、未認証でも学習・テストは利用可能。"
-            },
-            {
-                dt: "コーディング",
-                dd: "Next.js（App Router）と TypeScript で実装。句データは Neon（PostgreSQL）、認証は Supabase、音声ファイルは Cloudflare R2 で配信し、Howler で再生。API ルートで poems 取得・test-clears の取得・保存を実装し、Neon 障害時は 1～4 首のみ静的 JSON でフォールバック。Jest で lib の純粋関数と API ルートの単体テストを追加。語呂再生は非同期のため、次の問題へ進む際に前問の再生が続かないよう ref で制御している。"
-            },
-            {
-                dt: "工夫点",
-                dd: "テスト終了や画面遷移時に、読み込み中の語呂音声が後から流れないよう、playOnce で作成した Howl を Set で保持し stopAll 時に stop と unload で確実に止めるようにした。4首・8首・20首のクリア種別を testType で正しく保存し、学習リストの星表示（4首／8首／20首ブロック、間違えやすい問題のまとめテスト、両方クリア時の「間違えやすい問題」星）が一貫するよう判定を整理。"
-            },
+            { dt: "制作概要", dd: "既存のWebアプリ版（Cloudflare Workers + D1）を、Expo / React Native でAndroidネイティブアプリへ移植した学習アプリ。百人一首の暗記を「語呂合わせ」で楽しく続けられることを目的に開発し、Google Playストアで一般公開までを個人で担当した。バックエンドはWeb版と共用し、認証・学習データをクロスプラットフォームで同期できる設計にしている。" },
+            { dt: "アプリの特徴", dd: "25ブロック × 4首の段階的学習に加え、4択テスト・間違えやすい問題・コンピューター対戦（3難易度）・100首クリア後に解放される実践リスニング問題・間隔反復による復習の6モードを搭載。正解時には語呂音声を再生しつつ、対応する文字を赤くハイライトして「音と視覚」で記憶に残るようにした。復習データはローカルSQLiteで管理し、ローカル通知で学習リマインドを送る仕組みも実装。未ログインでも学習・テストが利用でき、ログイン後はクリア状況・ベストスコアがサーバー同期される。" },
+            { dt: "コーディング", dd: "Expo Router v5 によるファイルベースルーティングで画面を構成し、状態管理は Zustand、サーバーデータは TanStack Query + axios で扱う構成に統一。認証は expo-secure-store に JWT を暗号化保存し、axios インターセプターで Bearer Token を自動付与する方式へ切り替えた（Web版のhttpOnly Cookieとは別実装）。音声は expo-audio のシングルプレーヤー方式に全面リファクタし、縦書き表示・札風UIは VerticalText / PoemCard / GoroText など独自コンポーネントで実装。AAB ビルドは EAS 無料枠を使い切った後、WSL2 + Android SDK でローカルビルド環境を構築し、自前の署名キーで本番リリースまで行った。" },
+            { dt: "工夫点", dd: "語呂音声と赤文字ハイライトが「次の問題」や「もう一度」で残留・消失するレース条件を解消するため、useGoroPlayback に世代カウンタ（generationRef）を導入し、非同期 await 後に古い世代を早期returnする仕組みで安定化させた。音声プレーヤーは毎回生成するとネイティブリソースが枯渇してフリーズするため、シングルプレーヤー方式に統一。星の即時反映・ログイン切替時のデータ残留・復習画面での音声不具合なども QueryClient を共有化し invalidateQueries で解決した。公開フェーズではプライバシーポリシーページの用意、アカウント削除機能の実装、不要パーミッション（録音・ストレージ等）のブロック、アダプティブアイコンの専用画像設定など、Google Play 審査基準に合わせた調整も個人で完了させている。" },
             {
                 dt: "デモURL",
-                dd: '<a href="https://hyakunin-goromaru.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://hyakunin-goromaru.vercel.app/</a>'
+                dd: '<a href="https://play.google.com/store/apps/details?id=jp.co.hyakunin_goromaru" target="_blank" rel="noopener noreferrer" class="link-hover">https://play.google.com/store/apps/details?id=jp.co.hyakunin_goromaru</a>'
             }
         ],
-        github: "https://github.com/Itou-Hiroaki-qqq/hyakunin-goromaru",
+        github: "https://github.com/Itou-Hiroaki-qqq/hyakunin-goromaru-android",
         imageMain: "/assets/img/worksApp_hyakunin-goromaru.png"
     },
     {
@@ -479,6 +467,43 @@ export const worksApp: WorkApp[] = [
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/sakutto-task-cloudflare",
         imageMain: "/assets/img/worksApp_sakutto-task.png"
+    },
+    {
+        id: "hyakunin-goromaru",
+        title: "百人一首-ゴロでマル覚え-（Next.js + Vercel版）",
+        category: "WebApp ｜ 自主制作",
+        introduction: "百人一首を語呂合わせで覚える学習アプリ。上の句・下の句の学習と、4首・8首・20首の範囲テスト、まぎらわしい句に特化した問題で段階的に習得できる。音声再生とクリア状況の保存で、継続しやすい構成にしている。",
+        role: "Direction / Design / Coding",
+        tools: "Figma / React / Next.js / TypeScript / Neon / Supabase Auth / Cloudflare R2 / Howler.js / Vercel",
+        period: [
+            { task: "企画・ワイヤーフレーム", duration: "2日" },
+            { task: "デザイン", duration: "1日" },
+            { task: "コーディング", duration: "10日" }
+        ],
+        description: [
+            {
+                dt: "制作概要",
+                dd: "百人一首を語呂合わせで効率的に覚えるためのWebアプリ。上の句（ひらがな）から下の句を選ぶ形式のテストと、まぎらわしい句に絞った練習で、段階的に暗記できるようにした。認証ユーザーはクリア状況を保存でき、学習リストで進捗を星マークで確認できる。"
+            },
+            {
+                dt: "アプリの特徴",
+                dd: "1～4首・5～8首など4首単位のブロックで「学習」「4首でテスト」「前回も入れて8首でテスト」を提供。20首ごとに「1～20首テスト」「21～40首テスト」などのまとめテストで習熟度を確認できる。間違えやすい問題では「その1」「その2」形式で上の句・下の句のまぎらわしい組み合わせを重点練習。語呂解説と音声（R2配信）で耳と目から覚えられる。Supabase認証とNeon DBでクリア情報を保存し、未認証でも学習・テストは利用可能。"
+            },
+            {
+                dt: "コーディング",
+                dd: "Next.js（App Router）と TypeScript で実装。句データは Neon（PostgreSQL）、認証は Supabase、音声ファイルは Cloudflare R2 で配信し、Howler で再生。API ルートで poems 取得・test-clears の取得・保存を実装し、Neon 障害時は 1～4 首のみ静的 JSON でフォールバック。Jest で lib の純粋関数と API ルートの単体テストを追加。語呂再生は非同期のため、次の問題へ進む際に前問の再生が続かないよう ref で制御している。"
+            },
+            {
+                dt: "工夫点",
+                dd: "テスト終了や画面遷移時に、読み込み中の語呂音声が後から流れないよう、playOnce で作成した Howl を Set で保持し stopAll 時に stop と unload で確実に止めるようにした。4首・8首・20首のクリア種別を testType で正しく保存し、学習リストの星表示（4首／8首／20首ブロック、間違えやすい問題のまとめテスト、両方クリア時の「間違えやすい問題」星）が一貫するよう判定を整理。"
+            },
+            {
+                dt: "デモURL",
+                dd: '<a href="https://hyakunin-goromaru.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://hyakunin-goromaru.vercel.app/</a>'
+            }
+        ],
+        github: "https://github.com/Itou-Hiroaki-qqq/hyakunin-goromaru",
+        imageMain: "/assets/img/worksApp_hyakunin-goromaru.png"
     },
     {
         id: "hyakunin-goromaru-cloudflare",
