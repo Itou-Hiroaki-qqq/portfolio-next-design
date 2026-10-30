@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { db } from "../firebase/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import TurnstileWidget from "./TurnstileWidget";
 
 export default function ContactForm() {
     const [form, setForm] = useState({
@@ -13,7 +14,10 @@ export default function ContactForm() {
         confirmEmail: "",
         message: "",
     });
-    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "emailMismatch" | "emailFail">("idle");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "emailMismatch" | "emailFail" | "captchaFail">("idle");
+    // ボット対策（Cloudflare Turnstile）のトークン。1回の送信ごとに使い切り
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const [turnstileResetKey, setTurnstileResetKey] = useState(0);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,6 +30,11 @@ export default function ContactForm() {
 
         if (form.email !== form.confirmEmail) {
             setStatus("emailMismatch");
+            return;
+        }
+
+        if (!turnstileToken) {
+            setStatus("captchaFail");
             return;
         }
 
@@ -42,17 +51,23 @@ export default function ContactForm() {
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form),
+                body: JSON.stringify({ ...form, turnstileToken }),
             });
 
             const result = await res.json();
 
-            if (!result.success) {
+            if (res.status === 403) {
+                setStatus("captchaFail");
+            } else if (!result.success) {
                 console.error("Resend API Error:", result);
                 setStatus("emailFail");
             } else {
                 setStatus("success");
             }
+
+            // トークンは1回しか使えないため、ウィジェットをリセットする
+            setTurnstileToken(null);
+            setTurnstileResetKey((k) => k + 1);
 
             // フォームを空に戻す
             setForm({
@@ -204,7 +219,15 @@ export default function ContactForm() {
                     />
                 </div>
 
+                {/* ボット対策（Cloudflare Turnstile） */}
+                <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileResetKey} />
+
                 {/* フィードバックメッセージ */}
+                {status === "captchaFail" && (
+                    <p className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+                        ボット対策の確認ができませんでした。確認が完了してから、もう一度お試しください。
+                    </p>
+                )}
                 {status === "emailMismatch" && (
                     <p className="mb-4 p-3 bg-red-900/30 text-red-400 border border-red-800/50 rounded-md text-sm">
                         メールアドレスが一致しません。再度ご確認ください。
@@ -229,7 +252,7 @@ export default function ContactForm() {
                 {/* 送信ボタン */}
                 <button
                     type="submit"
-                    disabled={status === "loading"}
+                    disabled={status === "loading" || !turnstileToken}
                     className="
                         w-full py-3 text-white font-bold rounded-md cursor-pointer
                         bg-[#2563EB] hover:bg-[#1D4ED8] transition
