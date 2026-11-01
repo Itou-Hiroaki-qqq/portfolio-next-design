@@ -45,7 +45,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "sakutto-task",
-        title: "さくっとタスク（Next.js + Vercel版）",
+        title: "さくっとタスク（Next.js + Vercel版・公開終了）",
         category: "WebApp ｜ 自主制作",
         introduction: "カレンダーとタスクリストが一体化したタスク管理アプリ。繰り返しタスクや記念日設定、通知設定の他に、予定表の画像やPDFを読み込みタスク化する機能も備えている。",
         role: "Direction / Design / Coding",
@@ -61,8 +61,8 @@ export const worksApp: WorkApp[] = [
             { dt: "コーディング", dd: "Next.js（App Router）と TypeScript でコンポーネント設計を行い、Supabase で認証、Neon Database（PostgreSQL）でデータ管理を実装。Gemini API による画像解析、Resend を使ったメール通知、cron-job.org による定期実行など、複数の外部サービスを統合。タスク編集画面では認証とタスク取得を並列化し、認証後はフォームの骨組みを即表示。API 結果は差分マージせず丸ごと setState で差し替え、状態の一貫性を保つようにした。" },
             { dt: "工夫点", dd: "localStorage は初回表示・日付切り替え時の即時表示にのみ使い、表示更新時には参照しない設計にし、React State とキャッシュの二重管理を避けた。タスク追加・編集後の戻り先では、sessionStorage で「表示用の上書きリスト」を渡し、一覧に戻った直後から追加・編集内容が表示され続けるようにした（先行して返る API レスポンスで上書きされないよう制御）。完了チェックは Optimistic に State を更新し、失敗時のみロールバック。カレンダーの日付クリックと URL 同期の競合を防ぎ、別の日を選んでも意図した日が表示されるようにした。予定表読み込みでは抽出結果の手動編集・追加・削除が可能な UI と、時間入力補完（「900」→「9:00?」）など細かな UX 改善も行った。" },
             {
-                dt: "デモURL",
-                dd: '<a href="https://sakutto-task.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-task.vercel.app/</a>'
+                dt: "公開状況",
+                dd: 'セキュリティ保護のため、この旧版（Vercel版）は公開を終了しました。現在は「さくっとタスク（Next.js + Cloudflare版）」として公開しています。'
             }
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/sakutto-task",
@@ -195,7 +195,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "sakutto-sakubun",
-        title: "さくっと作文（Next.js + Vercel版）",
+        title: "さくっと作文（Next.js + Vercel版・公開終了）",
         category: "WebApp ｜ 自主制作",
         introduction: "AIが質問形式で情報を引き出し、作文作成を支援するWebアプリ。作文の自動生成・ヒント表示・手書き作文の画像添削の3モードを備え、小学1年から一般まで対象レベルに応じた出力を行う。",
         role: "Direction / Design / Coding",
@@ -211,8 +211,8 @@ export const worksApp: WorkApp[] = [
             { dt: "コーディング", dd: "Next.js 16（App Router）とTypeScriptで構築し、Gemini APIの呼び出しとDB操作はすべてServer Actionsでサーバー側に閉じ、APIキーをクライアントに露出しない設計にした。認証はSupabase Auth、ユーザーごとのテーマ履歴・保存ルールはNeon（PostgreSQL）で管理。画像添削ではクライアント側でCanvas APIによるリサイズ・圧縮を行い、Server Actionのペイロード制限内に収めている。Geminiの応答からTHOUGHTブロックを除去する後処理や、ヒント本文を◆・＜＞・・で整形して段階表示する独自パーサーも実装した" },
             { dt: "工夫点", dd: "質疑応答のフローでは、AIが「十分な情報が集まった」と判断するまで自動で質問を続け、途中でスキップや早期終了も選べる柔軟な進行にした。ヒントモードでは「ワンステップずつ表示」と「まるごと表示」を選択でき、自分のペースで確認できる。作文ルールの保存フローでは、sessionStorageで設定を退避し保存完了後に質疑応答へ自動遷移させることで、画面遷移によるコンテキスト消失を防いだ。画像添削の注意書きは対象レベルに応じてひらがな表記に切り替え、低学年の子どもが自分で読める配慮を加えた。" },
             {
-                dt: "デモURL",
-                dd: '<a href="https://sakutto-sakubun.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://sakutto-sakubun.vercel.app/</a>'
+                dt: "公開状況",
+                dd: 'セキュリティ保護のため、この旧版（Vercel版）は公開を終了しました。現在は「さくっと作文（Next.js + Cloudflare版）」として公開しています。'
             }
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/sakutto-sakubun",
@@ -307,7 +307,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "ouchi-zaiko-larabel",
-        title: "おうちで在庫くん（Laravel版）",
+        title: "おうちで在庫くん（Laravel版・公開終了）",
         category: "WebApp ｜ 自主制作",
         introduction: "家庭内の日用品・食材などの在庫を管理するアプリ。在庫の数量管理に加え、数量が少ない商品を自動的に上位表示する機能も備えている。",
         role: "Direction / Design / Coding",
@@ -323,8 +323,8 @@ export const worksApp: WorkApp[] = [
             { dt: "コーディング", dd: "Laravel（MVC構成）でユーザー認証、ジャンル・アイテムCRUD、購入リスト管理などを実装。BladeテンプレートとAlpine.jsでインタラクティブなUIを構築し、状態保持やタブ遷移などにも対応した。" },
             { dt: "工夫点", dd: "ジャンル間でのタブ状態をlocalStorageで保持することで、操作後もタブ位置が維持されるUXを実現。アラート表示の出し分けや共有ユーザー視点での表示変更など、細かな仕様調整を丁寧に対応した。" },
             {
-                dt: "デモURL",
-                dd: '<a href="https://ouchi-inventory.fly.dev/" target="_blank" rel="noopener noreferrer" class="link-hover">https://ouchi-inventory.fly.dev/</a>'
+                dt: "公開状況",
+                dd: 'セキュリティ保護のため、この旧版（Laravel版）は公開を終了しました。現在は「おうちで在庫くん（Next.js + Cloudflare版）」として公開しています。'
             }
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/ouchi-inventory",
@@ -395,7 +395,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         "id": "loto6-check",
-        "title": "ロト6速攻チェック（Next.js + Vercel版）",
+        "title": "ロト6速攻チェック（Next.js + Vercel版・公開終了）",
         "category": "WebApp ｜ 自主制作",
         "introduction": "ロト6の購入番号と当選番号を照合し、当選状況を瞬時に確認できるアプリ。当選番号は自動的に更新され、目視による当選番号確認のミスを防ぐことができる。",
         "role": "Direction / Design / Coding",
@@ -411,8 +411,8 @@ export const worksApp: WorkApp[] = [
             { "dt": "コーディング", "dd": "Next.js（App Router）とTypeScriptで構築し、Neon（PostgreSQL）で当選データを管理。Supabase Authenticationでユーザー認証を実装した。スクレイピング機能は別プロジェクト（loto6-auto-update）として分離し、cron-job.orgで定期実行。DaisyUIとTailwindCSSでシンプルなUIを実現した。" },
             { "dt": "工夫点", "dd": "日付のタイムゾーン問題やUI表示の細かな調整など、実際の動作確認を通じて改善を重ねた。データベースのUPSERT処理で重複登録を防ぎ、エラーハンドリングとロギングを充実させて運用時のトラブルを最小化。フロントエンドと自動更新処理を完全に分離することで、それぞれの最適な環境でデプロイできる柔軟性を持たせた。" },
             {
-                "dt": "デモURL",
-                "dd": '<a href="https://loto6-check.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://loto6-check.vercel.app/</a>'
+                "dt": "公開状況",
+                "dd": 'セキュリティ保護のため、この旧版（Vercel版）は公開を終了しました。現在は「ロト6チェック（Next.js + Cloudflare版）」として公開しています。'
             }
         ],
         "github": "https://github.com/Itou-Hiroaki-qqq/loto6-check",
@@ -470,7 +470,7 @@ export const worksApp: WorkApp[] = [
     },
     {
         id: "hyakunin-goromaru",
-        title: "百人一首-ゴロでマル覚え-（Next.js + Vercel版）",
+        title: "百人一首-ゴロでマル覚え-（Next.js + Vercel版・公開終了）",
         category: "WebApp ｜ 自主制作",
         introduction: "百人一首を語呂合わせで覚える学習アプリ。上の句・下の句の学習と、4首・8首・20首の範囲テスト、まぎらわしい句に特化した問題で段階的に習得できる。音声再生とクリア状況の保存で、継続しやすい構成にしている。",
         role: "Direction / Design / Coding",
@@ -498,8 +498,8 @@ export const worksApp: WorkApp[] = [
                 dd: "テスト終了や画面遷移時に、読み込み中の語呂音声が後から流れないよう、playOnce で作成した Howl を Set で保持し stopAll 時に stop と unload で確実に止めるようにした。4首・8首・20首のクリア種別を testType で正しく保存し、学習リストの星表示（4首／8首／20首ブロック、間違えやすい問題のまとめテスト、両方クリア時の「間違えやすい問題」星）が一貫するよう判定を整理。"
             },
             {
-                dt: "デモURL",
-                dd: '<a href="https://hyakunin-goromaru.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-hover">https://hyakunin-goromaru.vercel.app/</a>'
+                dt: "公開状況",
+                dd: 'セキュリティ保護のため、この旧版（Vercel版）は公開を終了しました。現在は「百人一首 -ゴロでマル覚え-（Next.js + Cloudflare版）」として公開しています。'
             }
         ],
         github: "https://github.com/Itou-Hiroaki-qqq/hyakunin-goromaru",
